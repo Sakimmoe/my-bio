@@ -1,0 +1,147 @@
+:root {
+    --bg-color: #fdf6f9;
+    --accent-color: #ffc2d1;
+    --text-main: #7a6e85;
+    --font-kawaii: 'M PLUS Rounded 1c', 'Noto Sans SC', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: var(--font-kawaii);
+    color: var(--text-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 动态背景全屏显示 */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(120deg, #fff5f8 0%, #eef5ff 100%);
+}
+
+/* 内容层 */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* --- 头像样式 --- */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* 这种不规则的圆更二次元 */
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(255, 194, 209, 0.3);
+    animation: morph 8s ease-in-out infinite;
+    border: 3px solid #fff;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes morph {
+    0% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
+    50% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
+}
+
+.nickname {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #4a4a4a;
+    letter-spacing: 2px;
+}
+
+.id-text {
+    font-size: 0.9rem;
+    color: #b1a7ba;
+    margin-top: 5px;
+}
+
+/* --- 文字排版区 --- */
+.bio-text {
+    text-align: center;
+    max-width: 600px;
+    line-height: 2.2;
+    margin-bottom: 40px;
+}
+
+.bio-text p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+.bio-text span {
+    background: linear-gradient(transparent 70%, #ffebf0 70%);
+    font-weight: 700;
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 社交图标（浮空感链接） --- */
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.glass-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-link:hover {
+    background: #fff;
+    color: var(--accent-color);
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 5px 15px rgba(255, 194, 209, 0.4);
+}
+
+.footer-info {
+    position: absolute;
+    bottom: 30px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
