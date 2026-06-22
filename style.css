@@ -18,9 +18,11 @@ body {
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* 防止整个页面出现滚动条 */
+    overflow: hidden;
+    position: relative;
 }
 
 #canvas-container {
@@ -44,49 +46,39 @@ body {
     100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
 }
 
+/* 去掉背景框的容器 */
 .wrapper {
     position: relative;
     z-index: 10;
     width: 90%;
-    max-width: 950px; /* 变宽了 */
-    height: 85vh; /* 限制高度，适应屏幕 */
+    max-width: 1000px;
+    height: 80vh;
     max-height: 600px;
-}
-
-/* 核心宽卡片设计 */
-.glass-card {
     display: flex;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(210, 190, 220, 0.2);
-    overflow: hidden;
+    align-items: stretch;
+    gap: 40px;
 }
 
 /* --- 左侧个人信息区 --- */
 .card-left {
     width: 30%;
-    background: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    /* 用一条若隐若现的竖线隔开左右 */
+    border-right: 1px dashed rgba(180, 160, 180, 0.3);
+    padding-right: 20px;
 }
 
 .avatar-box {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.4);
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 25px rgba(210, 180, 190, 0.2);
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .avatar-box img {
@@ -99,44 +91,60 @@ body {
     font-size: 2.2rem;
     font-weight: bold;
     color: #4a4254;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-.divider {
-    width: 40px;
-    height: 3px;
-    background: #e2cadd;
-    margin: 20px 0;
-    border-radius: 2px;
+/* 重新排版的个人信息标签 */
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
 }
 
-.copyright {
-    margin-top: auto;
-    font-size: 0.9rem;
+.info-tag {
+    font-size: 0.95rem;
     color: var(--text-light);
-    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.info-tag i {
+    margin-right: 6px;
+    color: #d1839e;
+    opacity: 0.8;
+}
+
+.info-tag:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 /* --- 右侧文案区 --- */
 .card-right {
     width: 70%;
-    padding: 40px 45px;
-    overflow-y: auto; /* 如果屏幕特别小，只有右侧文字区会滑动，不破坏整体布局 */
-    line-height: 1.8;
+    padding: 20px 40px 20px 20px;
+    overflow-y: auto;
+    line-height: 1.9;
     font-size: 1.05rem;
 }
 
-/* 隐藏右侧滚动条让视觉更干净 */
 .card-right::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 .card-right::-webkit-scrollbar-thumb {
-    background: rgba(226, 202, 221, 0.5);
+    background: rgba(210, 180, 190, 0.3);
     border-radius: 10px;
 }
 
 .card-right p {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     text-align: justify;
 }
 
@@ -146,28 +154,19 @@ strong {
 }
 
 code {
-    background: rgba(255, 183, 197, 0.2);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.95em;
-    color: #b56c86;
-}
-
-/* 九重紫专属高亮框 */
-.focus-box {
     background: rgba(255, 255, 255, 0.5);
-    border-left: 4px solid #d1839e;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 0 12px 12px 0;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #b56c86;
+    border: 1px solid rgba(255, 183, 197, 0.3);
 }
 
-.focus-box p {
-    margin-bottom: 8px;
-}
-.focus-box p:last-child {
-    margin-bottom: 0;
+.focus-box {
+    border-left: 3px solid #d1839e;
+    padding: 5px 0 5px 18px;
+    margin: 25px 0;
 }
 
 .sub-text {
@@ -175,37 +174,46 @@ code {
     color: var(--text-light);
 }
 
-/* 爱好网格布局，节省纵向空间 */
 .likes-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 15px;
     list-style: none;
-    margin: 20px 0;
+    margin: 25px 0;
     padding: 0;
 }
 
 .likes-grid li {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 8px 15px;
-    border-radius: 8px;
     font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.8);
+    color: var(--text-main);
+    padding-bottom: 4px;
+    border-bottom: 1px dashed rgba(210, 180, 190, 0.4);
 }
 
 .ending {
-    margin-top: 25px;
-    font-style: italic;
-    color: #796e85;
+    margin-top: 40px;
+    color: var(--text-light);
     text-align: center !important;
 }
 
-/* 手机端自动变为上下布局并允许滚动 */
+/* --- 底部全局版权居中 --- */
+.global-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
 @media (max-width: 768px) {
-    body { overflow: auto; padding: 20px 0; }
-    .wrapper { height: auto; max-height: none; }
-    .glass-card { flex-direction: column; }
-    .card-left { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.6); }
-    .card-right { width: 100%; padding: 25px 20px; overflow-y: visible; }
+    body { overflow: auto; }
+    .wrapper { flex-direction: column; height: auto; max-height: none; margin-bottom: 60px; padding-top: 30px; }
+    .card-left { width: 100%; border-right: none; padding-right: 0; margin-bottom: 30px; }
+    .card-right { width: 100%; padding: 0 10px; overflow-y: visible; }
     .likes-grid { grid-template-columns: 1fr; }
+    .global-footer { position: relative; padding-bottom: 20px; }
 }
