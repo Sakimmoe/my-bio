@@ -123,7 +123,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* 专属版权样式 */
+/* 电脑端专属版权样式（左下角） */
 .copyright {
     margin-top: 45px; 
     font-size: 0.85rem;
@@ -193,11 +193,42 @@ code {
     text-align: center !important;
 }
 
+/* =========================================
+   手机端适配：重点修改了底部的排版逻辑
+   ========================================= */
 @media (max-width: 768px) {
-    body { overflow: auto; justify-content: flex-start; }
-    .wrapper { flex-direction: column; height: auto; margin-top: 40px; margin-bottom: 40px; }
-    .card-left { width: 100%; border-right: none; padding-right: 0; margin-bottom: 30px; }
-    .card-right { width: 100%; padding: 0 10px; }
-    .likes-grid { grid-template-columns: 1fr; }
-    .copyright { margin-top: 30px; }
+    body { 
+        overflow: auto; 
+        justify-content: flex-start; 
+    }
+    .wrapper { 
+        flex-direction: column; 
+        height: auto; 
+        margin-top: 40px; 
+        margin-bottom: 40px; 
+        padding-bottom: 60px; /* 给绝对定位的版权留出空间，防止和文字重叠 */
+    }
+    .card-left { 
+        width: 100%; 
+        border-right: none; 
+        padding-right: 0; 
+        margin-bottom: 30px; 
+    }
+    .card-right { 
+        width: 100%; 
+        padding: 0 10px; 
+    }
+    .likes-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    /* 手机端将版权抽离，强行定位到最底部居中 */
+    .copyright { 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+    }
 }
