@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* 强制桌面端不出现大滚动条 */
     position: relative;
 }
 
@@ -46,17 +46,17 @@ body {
     100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
 }
 
-/* 去掉背景框的容器 */
+/* --- 核心容器修改 --- */
 .wrapper {
     position: relative;
     z-index: 10;
     width: 90%;
-    max-width: 1000px;
-    height: 80vh;
-    max-height: 600px;
+    max-width: 1050px; /* 稍微加宽一点，让文字横向铺开 */
+    height: auto; /* 去掉固定的 80vh 和 600px 限制，由内容自动撑开 */
     display: flex;
-    align-items: stretch;
+    align-items: center; /* 左右两栏居中对齐 */
     gap: 40px;
+    margin-top: -6vh; /* 重点：把整体内容向上拉，吃掉上方多余的留白 */
 }
 
 /* --- 左侧个人信息区 --- */
@@ -66,9 +66,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* 用一条若隐若现的竖线隔开左右 */
     border-right: 1px dashed rgba(180, 160, 180, 0.3);
-    padding-right: 20px;
+    padding-right: 30px; /* 增加一点与右侧文字的呼吸感 */
 }
 
 .avatar-box {
@@ -78,7 +77,7 @@ body {
     border: 4px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 25px rgba(210, 180, 190, 0.2);
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .avatar-box img {
@@ -92,11 +91,10 @@ body {
     font-weight: bold;
     color: #4a4254;
     letter-spacing: 4px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-/* 重新排版的个人信息标签 */
 .personal-info {
     display: flex;
     flex-direction: column;
@@ -126,25 +124,18 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- 右侧文案区 --- */
+/* --- 右侧文案区修改 --- */
 .card-right {
     width: 70%;
-    padding: 20px 40px 20px 20px;
-    overflow-y: auto;
-    line-height: 1.9;
+    padding: 0 20px; /* 去除上下内边距，完全释放纵向空间 */
+    /* 彻底去除了 overflow-y: auto，强迫内容平铺铺满 */
+    line-height: 1.75; /* 从 1.9 调至 1.75，稍微紧凑，避免纵向溢出 */
     font-size: 1.05rem;
 }
 
-.card-right::-webkit-scrollbar {
-    width: 4px;
-}
-.card-right::-webkit-scrollbar-thumb {
-    background: rgba(210, 180, 190, 0.3);
-    border-radius: 10px;
-}
-
+/* 统一缩紧各元素的段落间距 */
 .card-right p {
-    margin-bottom: 18px;
+    margin-bottom: 12px; /* 减小段间距 */
     text-align: justify;
 }
 
@@ -166,7 +157,7 @@ code {
 .focus-box {
     border-left: 3px solid #d1839e;
     padding: 5px 0 5px 18px;
-    margin: 25px 0;
+    margin: 15px 0; /* 缩小九重紫板块的上下间距 */
 }
 
 .sub-text {
@@ -177,9 +168,9 @@ code {
 .likes-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 12px;
     list-style: none;
-    margin: 25px 0;
+    margin: 15px 0; /* 缩小爱好列表的上下间距 */
     padding: 0;
 }
 
@@ -191,12 +182,12 @@ code {
 }
 
 .ending {
-    margin-top: 40px;
+    margin-top: 25px; /* 缩小结尾句的上方距离 */
     color: var(--text-light);
     text-align: center !important;
 }
 
-/* --- 底部全局版权居中 --- */
+/* --- 底部全局版权 --- */
 .global-footer {
     position: absolute;
     bottom: 20px;
@@ -209,11 +200,12 @@ code {
     z-index: 10;
 }
 
+/* 移动端兼容保持正常排版 */
 @media (max-width: 768px) {
-    body { overflow: auto; }
-    .wrapper { flex-direction: column; height: auto; max-height: none; margin-bottom: 60px; padding-top: 30px; }
+    body { overflow: auto; justify-content: flex-start; }
+    .wrapper { flex-direction: column; height: auto; margin-top: 40px; margin-bottom: 60px; }
     .card-left { width: 100%; border-right: none; padding-right: 0; margin-bottom: 30px; }
-    .card-right { width: 100%; padding: 0 10px; overflow-y: visible; }
+    .card-right { width: 100%; padding: 0 10px; }
     .likes-grid { grid-template-columns: 1fr; }
-    .global-footer { position: relative; padding-bottom: 20px; }
+    .global-footer { position: relative; padding-bottom: 20px; bottom: 0; }
 }
