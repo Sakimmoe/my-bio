@@ -1,47 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('canvas-container');
-    const colors = ['#ffc2d1', '#eef5ff', '#fff5f8', '#d0e1ff'];
 
-    // 创建漂浮装饰的小圆点
-    function createBubble() {
-        const bubble = document.createElement('div');
-        const size = Math.random() * 60 + 20 + 'px';
+    // 动态生成落樱的函数
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
         
-        bubble.style.position = 'absolute';
-        bubble.style.width = size;
-        bubble.style.height = size;
-        bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        bubble.style.borderRadius = '50%';
-        bubble.style.filter = 'blur(40px)';
-        bubble.style.opacity = '0.4';
+        // 随机起点位置（整个屏幕宽度）
+        petal.style.left = Math.random() * 100 + 'vw';
         
-        // 随机初始位置
-        bubble.style.left = Math.random() * 100 + 'vw';
-        bubble.style.top = Math.random() * 100 + 'vh';
+        // 随机下落时间 (5秒 到 10秒之间)
+        const duration = Math.random() * 5 + 5;
+        petal.style.animationDuration = duration + 's';
         
-        container.appendChild(bubble);
+        // 随机透明度，增加层次感
+        petal.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        // 随机大小
+        const width = Math.random() * 10 + 8; // 8px - 18px
+        petal.style.width = width + 'px';
+        petal.style.height = (width * 0.6) + 'px'; // 保持花瓣形状比例
+        
+        container.appendChild(petal);
 
-        // 让泡泡缓缓移动
-        animateBubble(bubble);
+        // 动画结束后清理 DOM 节点，防止浏览器卡顿
+        setTimeout(() => {
+            petal.remove();
+        }, duration * 1000);
     }
 
-    function animateBubble(el) {
-        const duration = Math.random() * 20000 + 10000;
-        const keyframes = [
-            { transform: 'translate(0, 0)' },
-            { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)` },
-            { transform: 'translate(0, 0)' }
-        ];
+    // 每 400 毫秒生成一片新的樱花
+    setInterval(createPetal, 400);
 
-        el.animate(keyframes, {
-            duration: duration,
-            iterations: Infinity,
-            easing: 'alternate'
-        });
-    }
-
-    // 生成15个氛围泡泡
-    for(let i=0; i<15; i++) {
-        createBubble();
+    // 初始先生成几片，避免刚打开页面时太空
+    for(let i = 0; i < 8; i++) {
+        setTimeout(createPetal, Math.random() * 2000);
     }
 });
