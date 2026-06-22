@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* 强制桌面端不出现大滚动条 */
+    overflow: hidden; 
     position: relative;
 }
 
@@ -46,17 +46,16 @@ body {
     100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
 }
 
-/* --- 核心容器修改 --- */
 .wrapper {
     position: relative;
     z-index: 10;
     width: 90%;
-    max-width: 1050px; /* 稍微加宽一点，让文字横向铺开 */
-    height: auto; /* 去掉固定的 80vh 和 600px 限制，由内容自动撑开 */
+    max-width: 1050px; 
+    height: auto; 
     display: flex;
-    align-items: center; /* 左右两栏居中对齐 */
+    align-items: center; 
     gap: 40px;
-    margin-top: -6vh; /* 重点：把整体内容向上拉，吃掉上方多余的留白 */
+    margin-top: -6vh; 
 }
 
 /* --- 左侧个人信息区 --- */
@@ -67,7 +66,7 @@ body {
     align-items: center;
     justify-content: center;
     border-right: 1px dashed rgba(180, 160, 180, 0.3);
-    padding-right: 30px; /* 增加一点与右侧文字的呼吸感 */
+    padding-right: 30px; 
 }
 
 .avatar-box {
@@ -124,18 +123,25 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- 右侧文案区修改 --- */
+/* 专属版权样式 */
+.copyright {
+    margin-top: 45px; 
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* --- 右侧文案区 --- */
 .card-right {
     width: 70%;
-    padding: 0 20px; /* 去除上下内边距，完全释放纵向空间 */
-    /* 彻底去除了 overflow-y: auto，强迫内容平铺铺满 */
-    line-height: 1.75; /* 从 1.9 调至 1.75，稍微紧凑，避免纵向溢出 */
+    padding: 0 20px; 
+    line-height: 1.75; 
     font-size: 1.05rem;
 }
 
-/* 统一缩紧各元素的段落间距 */
 .card-right p {
-    margin-bottom: 12px; /* 减小段间距 */
+    margin-bottom: 12px; 
     text-align: justify;
 }
 
@@ -157,7 +163,7 @@ code {
 .focus-box {
     border-left: 3px solid #d1839e;
     padding: 5px 0 5px 18px;
-    margin: 15px 0; /* 缩小九重紫板块的上下间距 */
+    margin: 15px 0; 
 }
 
 .sub-text {
@@ -170,7 +176,7 @@ code {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     list-style: none;
-    margin: 15px 0; /* 缩小爱好列表的上下间距 */
+    margin: 15px 0; 
     padding: 0;
 }
 
@@ -182,30 +188,16 @@ code {
 }
 
 .ending {
-    margin-top: 25px; /* 缩小结尾句的上方距离 */
+    margin-top: 25px; 
     color: var(--text-light);
     text-align: center !important;
 }
 
-/* --- 底部全局版权 --- */
-.global-footer {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    letter-spacing: 1px;
-    z-index: 10;
-}
-
-/* 移动端兼容保持正常排版 */
 @media (max-width: 768px) {
     body { overflow: auto; justify-content: flex-start; }
-    .wrapper { flex-direction: column; height: auto; margin-top: 40px; margin-bottom: 60px; }
+    .wrapper { flex-direction: column; height: auto; margin-top: 40px; margin-bottom: 40px; }
     .card-left { width: 100%; border-right: none; padding-right: 0; margin-bottom: 30px; }
     .card-right { width: 100%; padding: 0 10px; }
     .likes-grid { grid-template-columns: 1fr; }
-    .global-footer { position: relative; padding-bottom: 20px; bottom: 0; }
+    .copyright { margin-top: 30px; }
 }
