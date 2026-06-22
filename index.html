@@ -7,51 +7,52 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="canvas-container"></div>
 
-    <main class="content-wrapper">
-        <section class="profile-header">
-            <div class="avatar-circle">
-                <img src="avatar.jpg" alt="Yukari's Avatar">
-            </div>
-            <h1 class="nickname">油咖喱</h1>
-            <p class="id-text">@yukari.bio</p>
-        </section>
-
-        <section class="bio-text">
-            <p class="intro">👋 哈喽，我是 <span class="highlight">油咖喱</span>。</p>
-            <p class="desc">这里是我的个人 Bio，主要用于日常记录、转载存档与随笔感想。</p>
-            <p class="desc">日常游走在二次元与技术的边缘。平时喜欢听音乐、打游戏、看小说和追番，也热衷于折腾服务器和自建服务，比如屯一堆超高码率的无损音频。</p>
+    <main class="wrapper">
+        <div class="glass-card">
             
-            <ul class="favorites">
-                <li><i class="fas fa-heart"></i> 最喜欢 <strong>九重紫</strong> ！（还有一直记在心里的 Shizuku Lulu）</li>
-                <li><i class="fas fa-gamepad"></i> 最喜欢的游戏是 <strong>《守望先锋》</strong> </li>
-                <li><i class="fas fa-headphones-alt"></i> 最喜欢的歌手是 <strong>HoneyComeBear</strong> </li>
-                <li><i class="fas fa-book"></i> 最喜欢的作者是 <strong>乙一</strong> （也十分着迷于绫辻行人笔下的悬疑世界）</li>
-                <li><i class="fas fa-eye"></i> 最喜欢的动漫角色是 <strong>见崎鸣</strong> ！</li>
-            </ul>
-        </section>
+            <aside class="card-left">
+                <div class="avatar-box">
+                    <img src="avatar.jpg" alt="油咖喱的头像">
+                </div>
+                <h1 class="name">油咖喱</h1>
+                <div class="divider"></div>
+                <div class="copyright">
+                    © 2026 Made in 油咖喱
+                </div>
+            </aside>
 
-        <nav class="social-links">
-            <a href="https://github.com" target="_blank" class="glass-link">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="glass-link">
-                <i class="fas fa-blog"></i>
-            </a>
-            <a href="#" class="glass-link">
-                <i class="fas fa-music"></i>
-            </a>
-        </nav>
-        
-        <footer class="footer-info">
-            © 2026 Made in 油咖喱
-        </footer>
+            <article class="card-right">
+                <p>👋 哈喽，我是<strong>油咖喱</strong>。一个来自安徽的普通人。</p>
+                
+                <p>🎧 平时喜欢听音乐、打游戏、看小说和动漫，偶尔也会折腾服务器、域名和各种网站。<br>
+                   🏠 我是个挺宅的人。比起出门旅游或者参加聚会，我更喜欢待在家里戴着耳机听歌，玩几把游戏，或者找部动漫慢慢看完。</p>
+                
+                <div class="focus-box">
+                    <p>💜 目前最喜欢的虚拟主播是<strong>九重紫</strong>。</p>
+                    <p class="sub-text">我是 2026 年初开始关注她的。当时只是偶然点进直播间，却因为她对待观众认真又真诚的态度而留了下来。后来还了解到她曾经给舰长手绘头像的活动，每一张都画得非常认真。也正因为如此，我后来买下了 <code>kokonoyu.com</code>，并尝试为她制作一些相关的网站项目。</p>
+                </div>
+
+                <ul class="likes-grid">
+                    <li>🎮 游戏最爱 <strong>《守望先锋》</strong></li>
+                    <li>🎵 音乐偏爱 <strong>HoneyComeBear</strong></li>
+                    <li>📖 小说首推 <strong>乙一</strong></li>
+                    <li>👁️ 动漫独爱 <strong>见崎鸣</strong>《Another》</li>
+                </ul>
+
+                <p>💻 除了这些之外，我最大的兴趣大概就是折腾网站。买 VPS、注册域名、搭博客、部署各种小项目。虽然很多网站没什么访问量，但看到它们稳定运行的时候，还是会觉得很开心。</p>
+                
+                <p class="ending">🍃 这个页面也是如此。没有什么特别的目的。<br>
+                   只是想在互联网里留下一点属于自己的痕迹。<br>
+                   ✨ 如果你恰好路过这里，希望你今天过得开心。</p>
+            </article>
+
+        </div>
     </main>
 
     <script src="script.js"></script>
