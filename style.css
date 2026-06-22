@@ -19,9 +19,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* 垂直居中 */
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* 桌面端严格禁止出现滚动条 */
     position: relative;
 }
 
@@ -46,39 +46,35 @@ body {
     100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
 }
 
-/* 去掉背景框的容器 */
+/* --- 三栏式核心容器 --- */
 .wrapper {
     position: relative;
     z-index: 10;
-    width: 90%;
-    max-width: 1000px;
-    height: 80vh;
-    max-height: 600px;
+    width: 95%;
+    max-width: 1200px;
     display: flex;
-    align-items: stretch;
-    gap: 40px;
+    align-items: flex-start; /* 顶部对齐，充分利用上半身留白 */
+    gap: 50px;
+    margin-top: -60px; /* 整体往上提，吃掉上半部分的过度留白 */
 }
 
-/* --- 左侧个人信息区 --- */
-.card-left {
-    width: 30%;
+/* 第一栏：名片 */
+.col-profile {
+    width: 22%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* 用一条若隐若现的竖线隔开左右 */
-    border-right: 1px dashed rgba(180, 160, 180, 0.3);
-    padding-right: 20px;
+    padding-top: 20px;
 }
 
 .avatar-box {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 25px rgba(210, 180, 190, 0.2);
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 25px rgba(210, 180, 190, 0.15);
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .avatar-box img {
@@ -88,64 +84,52 @@ body {
 }
 
 .name {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     font-weight: bold;
     color: #4a4254;
     letter-spacing: 4px;
-    margin-bottom: 25px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: 20px;
 }
 
-/* 重新排版的个人信息标签 */
-.personal-info {
+.profile-meta {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
 }
 
-.info-tag {
+.meta-item {
     font-size: 0.95rem;
     color: var(--text-light);
-    background: rgba(255, 255, 255, 0.4);
-    padding: 6px 16px;
-    border-radius: 20px;
     letter-spacing: 1px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    transition: all 0.3s ease;
 }
 
-.info-tag i {
-    margin-right: 6px;
-    color: #d1839e;
-    opacity: 0.8;
-}
-
-.info-tag:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px);
-}
-
-/* --- 右侧文案区 --- */
-.card-right {
-    width: 70%;
-    padding: 20px 40px 20px 20px;
-    overflow-y: auto;
-    line-height: 1.9;
-    font-size: 1.05rem;
-}
-
-.card-right::-webkit-scrollbar {
-    width: 4px;
-}
-.card-right::-webkit-scrollbar-thumb {
-    background: rgba(210, 180, 190, 0.3);
-    border-radius: 10px;
-}
-
-.card-right p {
-    margin-bottom: 18px;
+/* 第二、三栏：文案内容栏 */
+.col-content {
+    width: 39%;
+    line-height: 1.75;
+    font-size: 1.02rem;
     text-align: justify;
+}
+
+.section-title {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #b56c86;
+    margin-bottom: 18px;
+    font-weight: bold;
+    opacity: 0.7;
+    border-bottom: 1px solid rgba(181, 108, 134, 0.2);
+    padding-bottom: 5px;
+}
+
+.col-content p {
+    margin-bottom: 14px;
+    text-indent: 2em; /* 传统的首行缩进，更具书信出版物美感 */
+}
+
+.col-content p:first-of-type {
+    text-indent: 0; /* 第一句不缩进 */
 }
 
 strong {
@@ -154,52 +138,74 @@ strong {
 }
 
 code {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 2px 8px;
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1px 5px;
+    border-radius: 4px;
     font-family: monospace;
     font-size: 0.9em;
     color: #b56c86;
-    border: 1px solid rgba(255, 183, 197, 0.3);
 }
 
-.focus-box {
-    border-left: 3px solid #d1839e;
-    padding: 5px 0 5px 18px;
-    margin: 25px 0;
+/* 九重紫版块稍微紧凑化 */
+.vtuber-box {
+    margin-bottom: 15px;
+}
+
+.vtuber-box p {
+    text-indent: 0 !important;
+    margin-bottom: 6px;
 }
 
 .sub-text {
     font-size: 0.95rem;
     color: var(--text-light);
+    line-height: 1.7;
 }
 
-.likes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+/* 偏好清单样式 */
+.likes-list {
     list-style: none;
-    margin: 25px 0;
     padding: 0;
+    margin: 15px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.likes-grid li {
+.likes-list li {
     font-size: 0.95rem;
     color: var(--text-main);
-    padding-bottom: 4px;
-    border-bottom: 1px dashed rgba(210, 180, 190, 0.4);
 }
 
-.ending {
-    margin-top: 40px;
+.likes-list span {
     color: var(--text-light);
-    text-align: center !important;
+    display: inline-block;
+    width: 40px;
 }
 
-/* --- 底部全局版权居中 --- */
+/* 结尾句 */
+.ending {
+    margin-top: 15px;
+    border-top: 1px dashed rgba(210, 180, 190, 0.3);
+    padding-top: 15px;
+}
+
+.ending p {
+    text-indent: 0 !important;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.wish {
+    color: #d1839e !important;
+    font-weight: 500;
+}
+
+/* --- 底部版权居中 --- */
 .global-footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 0;
     width: 100%;
     text-align: center;
@@ -209,11 +215,10 @@ code {
     z-index: 10;
 }
 
-@media (max-width: 768px) {
-    body { overflow: auto; }
-    .wrapper { flex-direction: column; height: auto; max-height: none; margin-bottom: 60px; padding-top: 30px; }
-    .card-left { width: 100%; border-right: none; padding-right: 0; margin-bottom: 30px; }
-    .card-right { width: 100%; padding: 0 10px; overflow-y: visible; }
-    .likes-grid { grid-template-columns: 1fr; }
-    .global-footer { position: relative; padding-bottom: 20px; }
+/* 移动端兼容：自动切回垂直滚动布局 */
+@media (max-width: 900px) {
+    body { overflow: auto; padding: 40px 0; }
+    .wrapper { flex-direction: column; height: auto; margin-top: 0; gap: 35px; width: 90%; }
+    .col-profile, .col-content { width: 100%; }
+    .global-footer { position: relative; bottom: 0; margin-top: 40px; }
 }
