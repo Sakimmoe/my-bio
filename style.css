@@ -1,8 +1,9 @@
 :root {
     --bg-color: #fdf6f9;
-    --accent-color: #ffc2d1;
-    --text-main: #7a6e85;
-    --font-kawaii: 'M PLUS Rounded 1c', 'Noto Sans SC', sans-serif;
+    --accent-color: #ffb7c5;
+    --text-main: #5c5266;
+    /* 核心：更换为温润的文楷 */
+    --font-kawaii: "LXGW WenKai Lite", "Noto Sans SC", sans-serif;
 }
 
 * {
@@ -12,25 +13,35 @@
 }
 
 body {
-    background: var(--bg-color);
+    background: linear-gradient(135deg, #fff5f8 0%, #f4f7fe 100%);
     font-family: var(--font-kawaii);
     color: var(--text-main);
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* 动态背景全屏显示 */
 #canvas-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1;
-    background: linear-gradient(120deg, #fff5f8 0%, #eef5ff 100%);
+    pointer-events: none;
 }
 
-/* 内容层 */
+/* 动态生成的落樱样式 */
+.petal {
+    position: absolute;
+    top: -20px;
+    background: var(--accent-color);
+    border-radius: 150% 0 150% 150%;
+    animation: fall linear forwards;
+    z-index: 1;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg) translateX(0); }
+    100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
+}
+
 .content-wrapper {
     position: relative;
     z-index: 10;
@@ -43,22 +54,25 @@ body {
     padding: 40px 20px;
 }
 
-/* --- 头像样式 --- */
 .profile-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .avatar-circle {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     margin: 0 auto 15px;
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* 这种不规则的圆更二次元 */
+    border-radius: 50%;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 10px 20px rgba(255, 194, 209, 0.3);
-    animation: morph 8s ease-in-out infinite;
-    border: 3px solid #fff;
+    box-shadow: 0 8px 25px rgba(255, 183, 197, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s ease;
+}
+
+.avatar-circle:hover {
+    transform: scale(1.05) rotate(5deg);
 }
 
 .avatar-circle img {
@@ -67,81 +81,102 @@ body {
     object-fit: cover;
 }
 
-@keyframes morph {
-    0% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
-    50% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; }
-    100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
-}
-
 .nickname {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #4a4a4a;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a4254;
     letter-spacing: 2px;
 }
 
 .id-text {
-    font-size: 0.9rem;
-    color: #b1a7ba;
+    font-size: 0.95rem;
+    color: #a097a8;
     margin-top: 5px;
+    font-family: monospace;
 }
 
-/* --- 文字排版区 --- */
+/* 文案排版区 */
 .bio-text {
-    text-align: center;
-    max-width: 600px;
-    line-height: 2.2;
-    margin-bottom: 40px;
+    max-width: 550px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-size: 1.1rem;
 }
 
 .bio-text p {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInUp 0.8s forwards;
+    margin-bottom: 12px;
+    text-align: center;
 }
 
-.bio-text span {
-    background: linear-gradient(transparent 70%, #ffebf0 70%);
-    font-weight: 700;
+.highlight {
+    color: #d1839e;
+    font-weight: bold;
 }
 
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
+.favorites {
+    list-style: none;
+    margin-top: 25px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 }
 
-/* --- 社交图标（浮空感链接） --- */
+.favorites li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+}
+
+.favorites li:last-child {
+    margin-bottom: 0;
+}
+
+.favorites li i {
+    width: 25px;
+    color: #d1839e;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.favorites strong {
+    color: #4a4254;
+    margin: 0 4px;
+}
+
 .social-links {
     display: flex;
-    gap: 20px;
+    gap: 18px;
+    margin-bottom: 40px;
 }
 
 .glass-link {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .glass-link:hover {
     background: #fff;
-    color: var(--accent-color);
-    transform: scale(1.2) rotate(10deg);
-    box-shadow: 0 5px 15px rgba(255, 194, 209, 0.4);
+    color: #d1839e;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.5);
 }
 
 .footer-info {
-    position: absolute;
-    bottom: 30px;
-    font-size: 0.8rem;
-    color: #ccc;
+    font-size: 1.1rem;
+    color: #4a4254;
+    letter-spacing: 1px;
+    opacity: 0.8;
 }
