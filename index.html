@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>油咖喱的个人主页</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>油咖喱 | Yukari's Bio</title>
+    <!-- 引入温馨的字体和精致图标 -->
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #9d4edd;
-            --primary-glow: #e0aaff;
-            --background: #0f0c1b;
-            --card-bg: rgba(255, 255, 255, 0.06);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text: #f8f9fa;
+            --main-color: #b39ddb; /* 优雅的御币紫 */
+            --accent-color: #ffb7c5; /* 唯美的樱花粉 */
+            --text-color: #5c5266; /* 柔和的深灰紫 */
+            --bg-gradient: linear-gradient(135deg, #e8f0fe 0%, #fbf0f3 50%, #f3e5f5 100%);
         }
 
         * {
@@ -24,211 +23,256 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background: var(--background);
-            color: var(--text);
+            font-family: 'Noto Sans SC', 'Kosugi Maru', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
             overflow-x: hidden;
+        }
+
+        /* --- 纯CSS二次元动态樱花飘落效果 --- */
+        .cherry-blossom-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            background: var(--accent-color);
+            border-radius: 150% 0 150% 150%;
+            opacity: 0.6;
+            animation: float-down linear infinite;
+        }
+
+        @keyframes float-down {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(105vh) translateX(100px) rotate(720deg); opacity: 0; }
+        }
+
+        /* 生成不同大小和速度的瓣儿 */
+        .petal:nth-child(1) { width: 12px; height: 8px; left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .petal:nth-child(2) { width: 16px; height: 11px; left: 30%; animation-duration: 12s; animation-delay: 2s; }
+        .petal:nth-child(3) { width: 10px; height: 7px; left: 55%; animation-duration: 9s; animation-delay: 4s; }
+        .petal:nth-child(4) { width: 14px; height: 10px; left: 75%; animation-duration: 11s; animation-delay: 1s; }
+        .petal:nth-child(5) { width: 12px; height: 8px; left: 90%; animation-duration: 7s; animation-delay: 5s; }
+
+        /* --- 主卡片组件（半透明空气感） --- */
+        .bio-card {
             position: relative;
-        }
-
-        /* 动态渐变背景背景 */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(45deg, #7b2cbf, #e0aaff);
-            border-radius: 50%;
-            top: 15%;
-            left: 15%;
-            filter: blur(120px);
-            z-index: -1;
-            animation: float 8s infinite alternate;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(45deg, #3c096c, #5a189a);
-            border-radius: 50%;
-            bottom: 15%;
-            right: 15%;
-            filter: blur(130px);
-            z-index: -1;
-            animation: float 12s infinite alternate-reverse;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-30px) scale(1.1); }
-        }
-
-        /* 核心毛玻璃卡片 */
-        .container {
+            z-index: 10;
             width: 90%;
-            max-width: 500px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px 30px;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 32px;
+            padding: 45px 35px 35px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(179, 157, 219, 0.15);
         }
 
-        .container:hover {
-            border-color: rgba(157, 78, 221, 0.4);
-            box-shadow: 0 20px 50px rgba(157, 78, 221, 0.15);
-        }
-
-        /* 头像组件 - 自带炫彩呼吸灯边缘 */
-        .avatar-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
+        /* 头像（日系软萌圆角框） */
+        .avatar-wrap {
+            width: 105px;
+            height: 105px;
             margin: 0 auto 20px;
-        }
-
-        .avatar-glow {
-            position: absolute;
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            background: linear-gradient(45deg, var(--primary), #ff9e00, var(--primary-glow));
-            border-radius: 50%;
-            z-index: -1;
-            animation: spin 4s linear infinite;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
+            position: relative;
         }
 
         .avatar {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: linear-gradient(135deg, #3a0ca3, #7209b7);
+            background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+            border: 4px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: #fff;
+            font-size: 2.2rem;
+            color: var(--main-color);
             font-weight: bold;
-            border: 3px solid #0f0c1b;
             object-fit: cover;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+        /* 名字与专属域名徽章 */
+        .name {
+            font-size: 1.6rem;
+            font-weight: 500;
             letter-spacing: 1px;
-            background: linear-gradient(to right, #fff, var(--primary-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #4a4254;
+            margin-bottom: 6px;
         }
 
-        .tag {
+        .domain-badge {
             display: inline-block;
-            font-size: 0.85rem;
-            padding: 4px 12px;
-            background: rgba(157, 78, 221, 0.2);
-            color: var(--primary-glow);
-            border-radius: 20px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--main-color);
+            border: 1px solid rgba(179, 157, 219, 0.4);
+            border-radius: 30px;
             margin-bottom: 25px;
-            border: 1px solid rgba(157, 78, 221, 0.3);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
-        .bio {
+        /* 清新排版文字区 */
+        .bio-content {
             font-size: 0.95rem;
-            color: #ccccff;
-            line-height: 1.6;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .bio-content p {
+            margin-bottom: 10px;
+        }
+        .bio-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 标签小可爱 */
+        .tag-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
             margin-bottom: 30px;
         }
 
-        /* 链接列表 */
-        .links-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .tag-node {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            background: rgba(179, 157, 219, 0.12);
+            color: #7e57c2;
+            border-radius: 12px;
         }
 
-        .link-item {
+        /* 唯美扁平化链接按钮 */
+        .links-gate {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .gate-button {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            color: var(--text);
+            padding: 14px 22px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            color: var(--text-color);
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.25s ease;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
         }
 
-        .link-item i {
-            font-size: 1.2rem;
-            color: var(--primary-glow);
-            transition: transform 0.25s ease;
+        .gate-button i.left-ico {
+            margin-right: 12px;
+            color: var(--main-color);
+            font-size: 1.1rem;
         }
 
-        .link-item:hover {
-            background: rgba(157, 78, 221, 0.15);
-            border-color: var(--primary);
-            transform: translateX(4px);
+        .gate-button i.arrow {
+            color: #ccc;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
         }
 
-        .link-item:hover i {
-            transform: scale(1.2);
+        /* 悬停动画：亮色柔和放大 */
+        .gate-button:hover {
+            background: #fff;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 183, 197, 0.25);
+            color: #333;
+        }
+
+        .gate-button:hover i.arrow {
+            transform: translateX(3px);
+            color: var(--accent-color);
         }
 
         .footer {
             margin-top: 35px;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.3);
+            color: #a097a8;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="avatar-container">
-            <div class="avatar-glow"></div>
+    <!-- 动态樱花层 -->
+    <div class="cherry-blossom-container">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <!-- 个人名片主体 -->
+    <div class="bio-card">
+        
+        <!-- 头像（若想放动漫萌图，直接把下面这一行换成 <img src="图片链接" class="avatar"> ） -->
+        <div class="avatar-wrap">
             <div class="avatar">油</div>
         </div>
 
-        <h1>油咖喱</h1>
-        <div class="tag">ACGN / 独立建站 / 技术好哥们</div>
+        <div class="name">油咖喱</div>
+        <div class="domain-badge">yukari.bio</div>
 
-        <p class="bio">
-            欢迎来到我的个人秘密基地✨。<br>
-            喜欢折腾服务器，也热爱二次元里的浪漫。这里记录着我的各种奇思妙想与奇妙旅程，很高兴认识你！
-        </p>
+        <div class="tag-container">
+            <span class="tag-node">🌸 二次元</span>
+            <span class="tag-node">🔮 独立建站</span>
+            <span class="tag-node">🎵 声音收集</span>
+        </div>
 
-        <div class="links-flex">
-            <a href="https://github.com" target="_blank" class="link-item">
-                <span><i class="fab fa-github" style="margin-right: 10px;"></i> GitHub 空间</span>
-                <i class="fas fa-chevron-right"></i>
+        <!-- 个人文字介绍区（可在此自由修改文字描述） -->
+        <div class="bio-content">
+            <p>👋 哈喽，这里是油咖喱（Yukari）的后花园。</p>
+            <p>✨ 是一名徜徉在 ACGN 幻想世界里的观测者，同时也对独立建站、自建极客服务有着莫名执念的技术同好。</p>
+            <p>🎧 喜欢收集各种高码率的治愈系音乐。日常喜欢在网络的角落里搭建属于自己的秘密基地，很高兴在这里与你相遇。</p>
+        </div>
+
+        <!-- 外部导航入口 -->
+        <div class="links-gate">
+            <a href="https://github.com" target="_blank" class="gate-button">
+                <span><i class="fab fa-github left-ico"></i>GitHub 空间</span>
+                <i class="fas fa-chevron-right arrow"></i>
             </a>
-            <a href="#" class="link-item">
-                <span><i class="fas fa-blog" style="margin-right: 10px;"></i> 个人主页</span>
-                <i class="fas fa-chevron-right"></i>
+            <a href="#" class="gate-button">
+                <span><i class="fas fa-feather-alt left-ico"></i>个人博客 / 门扉</span>
+                <i class="fas fa-chevron-right arrow"></i>
             </a>
-            <a href="#" class="link-item">
-                <span><i class="fas fa-music" style="margin-right: 10px;"></i> 我的音乐站</span>
-                <i class="fas fa-chevron-right"></i>
+            <a href="#" class="gate-button">
+                <span><i class="fas fa-compact-disc left-ico"></i>云端音乐小镇</span>
+                <i class="fas fa-chevron-right arrow"></i>
             </a>
         </div>
 
         <div class="footer">
-            © 2026 油咖喱. All rights reserved.
+            © 2026 油咖喱 · 留白处的星空
         </div>
     </div>
 
