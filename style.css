@@ -196,36 +196,34 @@ code {
 /* --- 悬浮按钮样式 --- */
 .floating-btn {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
-    width: 56px;
-    height: 56px;
+    bottom: 35px;
+    right: 35px;
+    width: 44px;
+    height: 44px;
     background: linear-gradient(135deg, #ffb7c5 0%, #e89eb0 100%);
     color: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     text-decoration: none;
-    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.5);
+    box-shadow: 0 6px 16px rgba(255, 183, 197, 0.4);
     z-index: 100;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* 添加轻微的上下呼吸动画 */
     animation: float-breath 3s ease-in-out infinite;
 }
 
-/* 鼠标悬停时的放大和光影反馈 */
 .floating-btn:hover {
-    transform: translateY(-4px) scale(1.08);
-    box-shadow: 0 12px 25px rgba(255, 183, 197, 0.7);
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.6);
     color: #fff;
-    animation-play-state: paused; /* 悬浮时暂停呼吸动画，保持稳定 */
+    animation-play-state: paused;
 }
 
 @keyframes float-breath {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-5px); }
 }
 
 /* =========================================
@@ -265,12 +263,12 @@ code {
         text-align: center;
     }
     
-    /* 手机端悬浮按钮适配：稍微缩小，靠边缘一些 */
+    /* 手机端悬浮按钮适配 */
     .floating-btn {
-        bottom: 25px;
+        bottom: 20px;
         right: 20px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.1rem;
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
     }
 }
