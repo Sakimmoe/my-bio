@@ -193,8 +193,43 @@ code {
     text-align: center !important;
 }
 
+/* --- 悬浮按钮样式 --- */
+.floating-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #ffb7c5 0%, #e89eb0 100%);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.5);
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* 添加轻微的上下呼吸动画 */
+    animation: float-breath 3s ease-in-out infinite;
+}
+
+/* 鼠标悬停时的放大和光影反馈 */
+.floating-btn:hover {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 12px 25px rgba(255, 183, 197, 0.7);
+    color: #fff;
+    animation-play-state: paused; /* 悬浮时暂停呼吸动画，保持稳定 */
+}
+
+@keyframes float-breath {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
 /* =========================================
-   手机端适配：重点修改了底部的排版逻辑
+   手机端适配
    ========================================= */
 @media (max-width: 768px) {
     body { 
@@ -206,7 +241,7 @@ code {
         height: auto; 
         margin-top: 40px; 
         margin-bottom: 40px; 
-        padding-bottom: 60px; /* 给绝对定位的版权留出空间，防止和文字重叠 */
+        padding-bottom: 60px;
     }
     .card-left { 
         width: 100%; 
@@ -221,8 +256,6 @@ code {
     .likes-grid { 
         grid-template-columns: 1fr; 
     }
-    
-    /* 手机端将版权抽离，强行定位到最底部居中 */
     .copyright { 
         position: absolute;
         bottom: 0;
@@ -230,5 +263,14 @@ code {
         width: 100%;
         margin-top: 0;
         text-align: center;
+    }
+    
+    /* 手机端悬浮按钮适配：稍微缩小，靠边缘一些 */
+    .floating-btn {
+        bottom: 25px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
     }
 }
