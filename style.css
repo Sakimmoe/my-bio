@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #fcf8fa;
+    --bg-color: #FDE9E7;
     --accent-color: #ffb7c5;
     --text-main: #5c5266;
     --text-light: #8a8094;
@@ -13,7 +13,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #fff5f8 0%, #f0f4ff 100%);
+    background: linear-gradient(135deg, #FDE9E7 0%, #FFF7F6 100%);
     font-family: var(--font-kawaii);
     color: var(--text-main);
     min-height: 100vh;
