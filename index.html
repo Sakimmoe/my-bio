@@ -1,284 +1,131 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>油咖喱 | Yukari.bio</title>
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    font-family:"KaiTi","STKaiti","Comic Sans MS","PingFang SC","Microsoft YaHei",cursive;
-    color:#4D4637;min-height:100vh;overflow-x:hidden;
-    background-color:#F5EDDD;
-    background-image:
-      radial-gradient(600px 300px at 90% -5%, #FFD9E4, transparent 60%),
-      radial-gradient(600px 340px at 0% 108%, #C9E9E4, transparent 58%),
-      radial-gradient(500px 300px at 55% 50%, #FFF2C9, transparent 60%);
-  }
-  .desk{max-width:1020px;margin:0 auto;padding:58px 18px 70px;position:relative}
-  /* 桌面上的小杂物（电脑端装饰） */
-  .note{
-    position:absolute;z-index:6;padding:15px 14px;border-radius:3px;
-    font-size:.92rem;line-height:1.8;box-shadow:0 10px 24px #B9AC8C55;
-  }
-  .note b{font-size:1.02rem}
-  .note .pin{
-    position:absolute;top:-9px;left:50%;transform:translateX(-50%);
-    width:16px;height:16px;border-radius:50%;
-    background:radial-gradient(circle at 34% 30%,#FF8FA0,#E86A80);
-    box-shadow:0 3px 6px #00000033;
-  }
-  .note.n1{top:-18px;left:3%;background:#FFE9A8;transform:rotate(-4deg)}
-  .note.n2{top:4px;right:2%;background:#FFD9E4;transform:rotate(3deg)}
-  .note.n3{bottom:-14px;right:12%;background:#C9E9E4;transform:rotate(-3deg)}
-  .doodle{position:absolute;pointer-events:none;z-index:5;font-size:24px;opacity:.5}
-  .d1{top:2%;left:20%;transform:rotate(-12deg)}
-  .d2{top:12%;right:18%;transform:rotate(10deg)}
-  .d3{bottom:10%;left:10%;transform:rotate(-8deg)}
-  .d4{bottom:4%;right:6%;transform:rotate(14deg)}
-  .journal{
-    position:relative;background:#FDFAF1;border:1px solid #E6DAC0;
-    border-radius:6px;box-shadow:0 30px 70px #B9AC8C66;
-    padding:46px 50px 36px;
-  }
-  .journal::before{
-    content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;
-    background-image:
-      linear-gradient(#0000 34px,#EADFC8 35px 36px);
-    background-size:100% 36px;opacity:.6;
-  }
-  .journal::after{
-    content:"";position:absolute;top:0;bottom:0;left:42px;width:1px;
-    background:#F0C9C4;opacity:.75;
-  }
-  .tape{
-    position:absolute;width:130px;height:28px;z-index:7;
-    background:linear-gradient(180deg,#FFB9CEB0,#FF9EC0B0);
-    box-shadow:0 2px 5px #00000014;
-  }
-  .tape.t1{top:-11px;left:6%;transform:rotate(-4deg)}
-  .tape.t2{top:-11px;right:7%;transform:rotate(3deg);background:linear-gradient(180deg,#9ED9E6B0,#7CC9D9B0)}
-  .tape.t3{bottom:-11px;left:32%;transform:rotate(-2deg);background:linear-gradient(180deg,#FFE9A8B0,#FFD98FB0)}
-  .head{position:relative;text-align:center;margin-bottom:34px}
-  .head .stamp{
-    display:inline-block;border:2.5px solid #E8796F;color:#E8796F;border-radius:6px;
-    padding:5px 16px;font-size:.84rem;letter-spacing:.26em;transform:rotate(4deg);
-    background:#FFF;box-shadow:0 4px 10px #E8796F22;
-  }
-  .head h1{
-    font-size:2.9rem;letter-spacing:.1em;color:#3E3A2F;margin-top:16px;
-    display:inline-block;position:relative;font-weight:700;
-  }
-  .head h1::after{
-    content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:12px;
-    background:#FFE9A8AA;z-index:-1;transform:rotate(-1deg);border-radius:4px;
-  }
-  .head .sub{font-size:.9rem;color:#9A8F79;letter-spacing:.24em;margin-top:12px}
-  .head .stickers{
-    display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:20px;
-  }
-  .head .sticker{
-    background:#FFF;border:2px dashed #C9BCA0;border-radius:12px;padding:6px 14px;
-    font-size:.86rem;color:#6E6450;box-shadow:2px 3px 0 #E4D9C0;
-  }
-  .head .sticker:nth-child(1){background:#FFD9E4;border-color:#F0A8C0;transform:rotate(-1.5deg)}
-  .head .sticker:nth-child(2){background:#C9E9E4;border-color:#8FC9C0;transform:rotate(1deg)}
-  .head .sticker:nth-child(3){background:#FFE9A8;border-color:#E3C25F;transform:rotate(-1deg)}
-  .head .sticker:nth-child(4){background:#E2D9FF;border-color:#B9A8F0;transform:rotate(1.5deg)}
-  .head .sticker:nth-child(5){background:#FFD2C2;border-color:#EFA28C;transform:rotate(-1deg)}
-  .layout{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:30px}
-  .page-card{
-    position:relative;background:#FFFDF7;border:1px solid #E9DFC9;border-radius:12px;
-    padding:22px 24px;margin-bottom:22px;box-shadow:5px 6px 0 #E9DFC9;
-  }
-  .page-card .corner{
-    position:absolute;top:-9px;right:16px;font-size:.72rem;font-weight:700;
-    background:#E8796F;color:#FFF;letter-spacing:.14em;padding:3px 12px;border-radius:4px;
-    transform:rotate(2deg);box-shadow:0 3px 8px #E8796F33;
-  }
-  .page-card h3{
-    font-size:1rem;color:#E8796F;letter-spacing:.16em;margin-bottom:13px;
-    border-bottom:2px dotted #DCCFB2;padding-bottom:9px;display:flex;align-items:center;gap:9px;
-  }
-  .page-card h3::before{content:"✎";color:#8FB8A8}
-  .page-card p{line-height:2.0;font-size:.97rem;margin-bottom:10px;text-align:justify}
-  .page-card b{color:#E8796F}
-  .page-card code{
-    background:#F4ECD9;border:1px solid #DCCFB2;border-radius:5px;
-    padding:1px 8px;color:#8A6F3D;font-family:"Cascadia Code",Consolas,monospace;font-size:.9em;
-  }
-  .polaroid{
-    background:#FFF;padding:10px 10px 13px;width:190px;margin:0 auto 8px;
-    box-shadow:0 14px 30px #B9AC8C66;transform:rotate(-2.5deg);
-    position:relative;
-  }
-  .polaroid::before{
-    content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);
-    width:86px;height:22px;background:#FFB9CEB8;box-shadow:0 2px 4px #00000014;
-  }
-  .polaroid img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;filter:saturate(1.05) contrast(1.02)}
-  .polaroid .cap{font-size:.8rem;color:#9A8F79;text-align:center;padding-top:8px;letter-spacing:.08em}
-  .likes{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .likes li{
-    background:#FFFDF7;border:1px solid #E9DFC9;border-radius:10px;padding:13px 15px;
-    font-size:.93rem;box-shadow:3px 3px 0 #EDE3CC;transition:.2s;
-  }
-  .likes li:nth-child(1){background:#FFD9E4;transform:rotate(-.5deg)}
-  .likes li:nth-child(2){background:#C9E9E4;transform:rotate(.5deg)}
-  .likes li:nth-child(3){background:#FFE9A8;transform:rotate(-.5deg)}
-  .likes li:nth-child(4){background:#E2D9FF;transform:rotate(.5deg)}
-  .likes li:hover{transform:translateY(-3px) rotate(0)}
-  .likes b{color:#8A6F3D}
-  .focus{
-    background:#FFF9E9;border:1.5px dashed #D8C49B;border-radius:12px;
-    padding:20px 20px 16px;position:relative;box-shadow:inset 0 0 0 4px #FFFDF7;
-  }
-  .focus::before{
-    content:"★ 重要!";position:absolute;top:-13px;left:16px;background:#E8796F;color:#FFF;
-    font-size:.74rem;letter-spacing:.14em;padding:4px 12px;border-radius:5px;
-    box-shadow:0 3px 8px #E8796F33;
-  }
-  .focus h4{font-size:1.08rem;color:#8A6F3D;margin-bottom:10px}
-  .focus h4 b{color:#E8796F}
-  .focus p{font-size:.94rem;line-height:2;color:#6E6453;margin-bottom:8px}
-  .focus .tape-mini{
-    display:inline-block;background:#FFB9CE;color:#8A5B6E;font-size:.78rem;
-    padding:3px 12px;border-radius:3px;transform:rotate(-1deg);margin-top:4px;
-  }
-  .todo{list-style:none;margin-top:4px}
-  .todo li{
-    display:flex;gap:11px;align-items:flex-start;padding:8px 0;
-    border-bottom:1px dashed #E4D9C0;font-size:.94rem;line-height:1.7;
-  }
-  .todo li::before{content:"☑";color:#8FB8A8;font-size:1rem}
-  .todo b{color:#8A6F3D}
-  .note-card{
-    background:#FFE9A8;border:1px solid #E3C25F;border-radius:8px;padding:18px 20px;
-    transform:rotate(-.6deg);box-shadow:4px 5px 0 #E3C25F55;position:relative;
-  }
-  .note-card .tape-mini{
-    position:absolute;top:-10px;left:22px;background:#FFB9CE;color:#8A5B6E;
-    font-size:.74rem;padding:3px 12px;border-radius:3px;transform:rotate(-2deg);
-  }
-  .note-card p{line-height:2;font-size:.97rem;color:#6E6453}
-  .note-card b{color:#E8796F}
-  .foot{
-    position:relative;display:flex;justify-content:space-between;align-items:center;
-    margin-top:30px;padding-top:16px;border-top:2px dotted #DCCFB2;
-    font-size:.88rem;color:#9A8F79;letter-spacing:.08em;
-  }
-  .foot a{
-    color:#E8796F;text-decoration:none;border-bottom:2px dotted #E8796F88;
-    padding-bottom:2px;transition:.2s;
-  }
-  .foot a:hover{border-bottom-style:solid}
-  /* 手机适配 */
-  @media (max-width:820px){
-    body{background-image:
-      radial-gradient(420px 260px at 95% -3%, #FFD9E4, transparent 60%),
-      radial-gradient(420px 300px at 0% 105%, #C9E9E4, transparent 58%)}
-    .desk{padding:30px 10px 50px}
-    .note,.doodle{display:none}
-    .journal{padding:38px 18px 26px}
-    .journal::before{background-size:100% 34px}
-    .journal::after{left:24px}
-    .head h1{font-size:2.1rem}
-    .head .sticker{font-size:.8rem;padding:5px 11px}
-    .layout{grid-template-columns:1fr;gap:0}
-    .page-card{padding:19px 18px;margin-bottom:18px}
-    .polaroid{width:170px}
-    .likes{grid-template-columns:1fr}
-    .foot{flex-direction:column;gap:12px;text-align:center}
-    .tape{width:96px}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>油咖喱 | yukari.bio</title>
+    <meta name="description" content="油咖喱的个人主页：网站与服务器爱好者，安静地在互联网上留下一点属于自己的痕迹。">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="desk">
-  <div class="note n1"><span class="pin"></span><b>今天也</b><br>不想出门 :)</div>
-  <div class="note n2"><span class="pin"></span><b>耳机里</b><br>正在放 HCB ♪</div>
-  <div class="note n3"><span class="pin"></span><b>服务器</b><br>运行中 · 开心！</div>
-  <span class="doodle d1">✦</span><span class="doodle d2">♡</span><span class="doodle d3">✧</span><span class="doodle d4">♪</span>
 
-  <main class="journal">
-    <i class="tape t1"></i><i class="tape t2"></i><i class="tape t3"></i>
-
-    <header class="head">
-      <span class="stamp">我的小世界</span>
-      <h1>油咖喱的手帐</h1>
-      <div class="sub">YUKARI · 记录于 2026 年</div>
-      <div class="stickers">
-        <span class="sticker">⌖ 中国 · 安徽</span>
-        <span class="sticker">✿ 2002.07.14</span>
-        <span class="sticker">☾ 资深社恐</span>
-        <span class="sticker">✧ 重度洁癖</span>
-        <span class="sticker">♢ 完美主义者</span>
-      </div>
-    </header>
-
-    <div class="layout">
-      <section>
-        <div class="page-card">
-          <span class="corner">DAY 01</span>
-          <h3>你好呀</h3>
-          <div class="polaroid">
-            <img src="avatar.jpg" alt="油咖喱的头像">
-            <div class="cap">油咖喱 · 拍于某天</div>
-          </div>
-          <p>✦ 哈喽，我是 <b>油咖喱</b>。平时喜欢听音乐、打游戏、看小说和动漫，也会折腾服务器、域名。</p>
-          <p>⌂ 我是个挺宅的人，如果条件允许的话我可以一年不出门。我有点口吃，所以很害怕社交，害怕因为自己不善言辞会给别人带来困扰。</p>
-        </div>
-
-        <div class="page-card">
-          <span class="corner">★ 推し</span>
-          <h3>最喜欢</h3>
-          <div class="focus">
-            <h4>❥ 九重紫 <b>さん</b></h4>
-            <p>2026 年 1 月 13 日下午，第一次点进直播间并关注了她。<br>
-            并在 2 月 16 日除夕夜那天，成为了她的舰长。<br>
-            我又很幸运地注册到了 <code>kokonoyu.com</code>，想用自己折腾网站的爱好，为她做一些相关的项目，只希望她能开心。</p>
-            <span class="tape-mini">✦ 应援中 · ずっと応援する</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="page-card">
-          <span class="corner">收藏</span>
-          <h3>喜好清单</h3>
-          <ul class="likes">
-            <li>✜ 游戏 <b>《守望先锋》</b></li>
-            <li>♪ 音乐 <b>HoneyComeBear</b></li>
-            <li>✎ 小说 <b>乙一</b></li>
-            <li>❈ 动漫 <b>见崎鸣《Another》</b></li>
-          </ul>
-        </div>
-
-        <div class="page-card">
-          <span class="corner">TO DO</span>
-          <h3>今日事项</h3>
-          <ul class="todo">
-            <li>买 VPS、注册新域名 —— <b>已完成 ✓</b></li>
-            <li>搭博客、部署小项目 —— <b>稳定运行中 ✓</b></li>
-            <li>给 kokonoyu.com 加一点新东西 —— <b>进行中…</b></li>
-            <li>听 HoneyComeBear 一整天 —— <b>循环播放 ✓</b></li>
-          </ul>
-        </div>
-
-        <div class="note-card">
-          <span class="tape-mini">写给路过的人</span>
-          <p>⊹ 这个页面也是如此。没有什么特别的目的。<br>
-          只是想在互联网里留下一点属于自己的痕迹。<br>
-          ✧ 如果你恰好路过这里，希望你 <b>今天过得开心</b>！</p>
-        </div>
-      </section>
+    <div class="bg" aria-hidden="true">
+        <img src="bg-character.png" alt="">
+        <div class="overlay"></div>
     </div>
 
-    <div class="foot">
-      <span>© 2026 Made in 油咖喱</span>
-      <a href="https://yukari.one">去我的主页看看 →</a>
-    </div>
-  </main>
-</div>
+    <main class="container">
+        <header class="profile">
+            <div class="avatar">
+                <img src="avatar.jpg" alt="油咖喱的头像">
+            </div>
+            <h1>油咖喱</h1>
+            <p class="tagline">网站与服务器爱好者</p>
+            <p class="meta">中国 · 安徽 · 2002.07.14</p>
+
+            <div class="socials">
+                <a href="https://yukari.one" target="_blank" rel="noreferrer" title="个人主页">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <a href="https://kokonoyu.com" target="_blank" rel="noreferrer" title="kokonoyu.com">
+                    <i class="fa-solid fa-heart"></i>
+                </a>
+                <a href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+
+            <p class="profile-text">你好，我是油咖喱。这个页面记录关于我的一些事。</p>
+        </header>
+
+        <div class="cards">
+            <section class="card-block">
+                <div class="card">
+                    <h2>关于我</h2>
+                    <div class="card-body">
+                        <p>你好，我是油咖喱，来自安徽，2002 年 7 月生。性格偏内向，喜欢安静，做事习惯把细节做到位——朋友们常说我是个完美主义者。</p>
+                        <p>平时喜欢听音乐、打游戏、看小说和动画，也热衷于折腾互联网：买服务器、注册域名、搭博客、部署各种小项目。我不太擅长社交，但对待人和事都足够认真。</p>
+                        <p>比起热闹，我更享受把一个想法从零做到稳定运行的过程。这个页面也是如此：没有太复杂的目的，只是想在网上留下一块属于自己的地方。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-block">
+                <div class="card">
+                    <h2>关注与项目</h2>
+                    <div class="card-body">
+                        <p>2026 年初，我开始关注九重紫。</p>
+                        <p>1 月 13 日，我第一次点进她的直播间；2 月 16 日除夕夜，成为了她的舰长。后来我有幸注册到了 kokonoyu.com，想用自己的网站开发经验，为她做一点小而认真的项目，也算是一份支持。</p>
+                        <p>这个项目仍在慢慢完善中。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-block">
+                <div class="card">
+                    <h2>兴趣</h2>
+                    <div class="card-body">
+                        <p>除了折腾网站，这些也构成了我的日常：</p>
+                        <ul class="interests">
+                            <li><i class="fa-solid fa-gamepad"></i>游戏：最常玩《守望先锋》</li>
+                            <li><i class="fa-solid fa-music"></i>音乐：偏爱 HoneyComeBear</li>
+                            <li><i class="fa-solid fa-book"></i>小说：首推乙一</li>
+                            <li><i class="fa-solid fa-tv"></i>动画：《见崎鸣》（Another）</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <a class="link-item" href="https://yukari.one" target="_blank" rel="noreferrer">
+                <div class="card link-card">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="link-text">
+                        <strong>个人主页</strong>
+                        <small>yukari.one · 博客与随笔</small>
+                    </span>
+                    <i class="fa-solid fa-arrow-right link-arrow"></i>
+                </div>
+            </a>
+
+            <a class="link-item" href="https://kokonoyu.com" target="_blank" rel="noreferrer">
+                <div class="card link-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="link-text">
+                        <strong>kokonoyu.com</strong>
+                        <small>关于九重紫的小项目</small>
+                    </span>
+                    <i class="fa-solid fa-arrow-right link-arrow"></i>
+                </div>
+            </a>
+
+            <a class="link-item" href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer">
+                <div class="card link-card">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="link-text">
+                        <strong>GitHub</strong>
+                        <small>我的代码仓库</small>
+                    </span>
+                    <i class="fa-solid fa-arrow-right link-arrow"></i>
+                </div>
+            </a>
+
+            <a class="link-item" href="https://yukari.bio" target="_blank" rel="noreferrer">
+                <div class="card link-card">
+                    <i class="fa-solid fa-globe"></i>
+                    <span class="link-text">
+                        <strong>本站</strong>
+                        <small>yukari.bio · 你现在所在的页面</small>
+                    </span>
+                    <i class="fa-solid fa-arrow-right link-arrow"></i>
+                </div>
+            </a>
+        </div>
+
+        <footer>© 2026 油咖喱 · 用心维护每一个小项目</footer>
+    </main>
+
 </body>
 </html>

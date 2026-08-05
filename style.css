@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #FDE9E7;
-    --accent-color: #ffb7c5;
-    --text-main: #5c5266;
-    --text-light: #8a8094;
-    --font-kawaii: "LXGW WenKai Lite", "Noto Sans SC", serif;
+    --font-color: #5f4a70;
+    --card-bg: rgba(255, 255, 255, 0.92);
+    --overlay: rgba(255, 255, 255, 0.64);
+    --bg-fallback: #efe6f1;
+    --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 * {
@@ -12,263 +12,282 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    background: linear-gradient(135deg, #FDE9E7 0%, #FFF7F6 100%);
-    font-family: var(--font-kawaii);
-    color: var(--text-main);
+    min-height: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--font-color);
+    background: var(--bg-fallback);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
-    position: relative;
 }
 
-#canvas-container {
+/* --- 背景图 + 白色遮罩 --- */
+.bg {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    pointer-events: none;
+    inset: 0;
+    z-index: 0;
+    background: var(--bg-fallback);
 }
 
-.petal {
+.bg img {
     position: absolute;
-    top: -20px;
-    background: var(--accent-color);
-    border-radius: 150% 0 150% 150%;
-    animation: fall linear forwards;
-    z-index: 1;
-}
-
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg) translateX(0); }
-    100% { transform: translateY(110vh) rotate(720deg) translateX(120px); }
-}
-
-.wrapper {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 1050px; 
-    height: auto; 
-    display: flex;
-    align-items: center; 
-    gap: 40px;
-    margin-top: -6vh; 
-}
-
-/* --- 左侧个人信息区 --- */
-.card-left {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px dashed rgba(180, 160, 180, 0.3);
-    padding-right: 30px; 
-}
-
-.avatar-box {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 25px rgba(210, 180, 190, 0.2);
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.avatar-box img {
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 35%;
 }
 
-.name {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #4a4254;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.02);
+.bg .overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
 }
 
-.personal-info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+.container {
+    position: relative;
+    z-index: 1;
 }
 
-.info-tag {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    background: rgba(255, 255, 255, 0.4);
-    padding: 6px 16px;
-    border-radius: 20px;
-    letter-spacing: 1px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    transition: all 0.3s ease;
+/* --- 页面主体 --- */
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 20px 56px;
 }
 
-.info-tag i {
-    margin-right: 6px;
-    color: #d1839e;
-    opacity: 0.8;
+/* --- 头像与个人信息 --- */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.info-tag:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px);
+.avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    border: 2px solid var(--font-color);
+    background: #fff;
+    box-shadow: 6px 8px 0 rgba(95, 74, 112, 0.9);
+    overflow: hidden;
 }
 
-/* 电脑端专属版权样式（左下角） */
-.copyright {
-    margin-top: 45px; 
-    font-size: 0.85rem;
-    color: var(--text-light);
-    letter-spacing: 1px;
-    opacity: 0.8;
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-/* --- 右侧文案区 --- */
-.card-right {
-    width: 70%;
-    padding: 0 20px; 
-    line-height: 1.75; 
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-indent: 0.12em;
+}
+
+.tagline {
+    margin-top: 6px;
     font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
 }
 
-.card-right p {
-    margin-bottom: 12px; 
+.meta {
+    margin-top: 4px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.socials a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border: 2px solid var(--font-color);
+    color: var(--font-color);
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 3px 4px 0 rgba(95, 74, 112, 0.8);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.socials a:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 5px 0 rgba(95, 74, 112, 0.9);
+}
+
+.profile-text {
+    margin-top: 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* --- lit.link 风格卡片 --- */
+.card-block {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.card-block::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    width: 100%;
+    height: 100%;
+    background: var(--font-color);
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    background: var(--card-bg);
+    border: 2px solid var(--font-color);
+    padding: 16px 18px;
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+}
+
+.card-body {
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.card-body p {
+    margin-bottom: 10px;
     text-align: justify;
 }
 
-strong {
-    color: #d1839e;
-    font-weight: bold;
+.card-body p:last-child {
+    margin-bottom: 0;
 }
 
-code {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.9em;
-    color: #b56c86;
-    border: 1px solid rgba(255, 183, 197, 0.3);
-}
-
-.focus-box {
-    border-left: 3px solid #d1839e;
-    padding: 5px 0 5px 18px;
-    margin: 15px 0; 
-}
-
-.sub-text {
-    font-size: 0.95rem;
-    color: var(--text-light);
-}
-
-.likes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.interests {
     list-style: none;
-    margin: 15px 0; 
-    padding: 0;
+    margin-top: 2px;
 }
 
-.likes-grid li {
-    font-size: 0.95rem;
-    color: var(--text-main);
-    padding-bottom: 4px;
-    border-bottom: 1px dashed rgba(210, 180, 190, 0.4);
-}
-
-.ending {
-    margin-top: 25px; 
-    color: var(--text-light);
-    text-align: center !important;
-}
-
-/* --- 悬浮按钮样式 --- */
-.floating-btn {
-    position: fixed;
-    bottom: 35px;
-    right: 35px;
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, #ffb7c5 0%, #e89eb0 100%);
-    color: #fff;
-    border-radius: 50%;
+.interests li {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 1.05rem;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(95, 74, 112, 0.25);
+}
+
+.interests li:last-child {
+    border-bottom: none;
+}
+
+.interests i {
+    width: 20px;
+    text-align: center;
+}
+
+/* --- 可点击链接卡片 --- */
+a.link-item {
+    position: relative;
+    display: block;
+    margin-bottom: 18px;
+    color: var(--font-color);
     text-decoration: none;
-    box-shadow: 0 6px 16px rgba(255, 183, 197, 0.4);
-    z-index: 100;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    animation: float-breath 3s ease-in-out infinite;
 }
 
-.floating-btn:hover {
-    transform: translateY(-3px) scale(1.05); 
-    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.6);
-    color: #fff;
-    animation-play-state: paused;
+a.link-item::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    width: 100%;
+    height: 100%;
+    background: var(--font-color);
 }
 
-@keyframes float-breath {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+.card.link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    transition: transform 0.15s ease;
 }
 
-/* =========================================
-   手机端适配
-   ========================================= */
-@media (max-width: 768px) {
-    body { 
-        overflow: auto; 
-        justify-content: flex-start; 
+a.link-item:hover .card.link-card {
+    transform: translate(-2px, -2px);
+}
+
+.link-card > i:first-child {
+    width: 24px;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.link-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.link-text strong {
+    font-size: 1rem;
+}
+
+.link-text small {
+    margin-top: 2px;
+    font-size: 0.82rem;
+    opacity: 0.75;
+}
+
+.link-arrow {
+    opacity: 0.7;
+}
+
+/* --- 页脚 --- */
+footer {
+    margin-top: 34px;
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+}
+
+/* --- 手机端适配 --- */
+@media (max-width: 520px) {
+    .container {
+        padding: 32px 16px 44px;
     }
-    .wrapper { 
-        flex-direction: column; 
-        height: auto; 
-        margin-top: 40px; 
-        margin-bottom: 40px; 
-        padding-bottom: 60px;
+
+    .avatar {
+        width: 100px;
+        height: 100px;
     }
-    .card-left { 
-        width: 100%; 
-        border-right: none; 
-        padding-right: 0; 
-        margin-bottom: 30px; 
+
+    h1 {
+        font-size: 1.7rem;
     }
-    .card-right { 
-        width: 100%; 
-        padding: 0 10px; 
-    }
-    .likes-grid { 
-        grid-template-columns: 1fr; 
-    }
-    .copyright { 
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        margin-top: 0;
-        text-align: center;
-    }
-    
-    /* 手机端悬浮按钮适配 */
-    .floating-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 38px;
-        height: 38px;
-        font-size: 0.9rem;
+
+    .card {
+        padding: 14px 14px;
     }
 }
