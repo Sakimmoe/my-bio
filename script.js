@@ -13,18 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
         p.style.animationDuration = dur + 's';
         p.style.animationDelay = (-Math.random() * 10) + 's';
 
-        p.style.opacity = (Math.random() * 0.22 + 0.28).toFixed(2); // 0.28~0.5
+        p.style.opacity = (Math.random() * 0.18 + 0.22).toFixed(2); // 0.22~0.4
 
-        const w = Math.random() * 7 + 7;         // 7~14px
-        p.style.width = w + 'px';
+        const w = Math.random() * 6 + 6;         // 6~12px
         p.style.height = (w * 0.62) + 'px';
 
         container.appendChild(p);
         setTimeout(() => p.remove(), (dur + 12) * 1000);
     }
 
-    for (let i = 0; i < 8; i++) {
-        setTimeout(createPetal, Math.random() * 2200);
+    for (let i = 0; i < 6; i++) {
+        setTimeout(createPetal, Math.random() * 2500);
     }
-    setInterval(createPetal, 1100);
+    setInterval(createPetal, 1500);
 });

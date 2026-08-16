@@ -1,17 +1,17 @@
 /* ============================================================
    bio.noyu.moe · 二次元日系极简
-   樱花粉 × 和纸白 · 霞鹜文楷 · 少量飘樱
+   樱花粉 × 和纸白 · 霞鹜文楷 · 极少量飘樱
    ============================================================ */
 
 :root {
-    --bg-top: #FFF6F8;
-    --bg-bottom: #F3F6FC;
-    --accent: #E88BA5;
-    --accent-deep: #D1839E;
-    --accent-soft: #FFE9EE;
-    --text-main: #4A4254;
-    --text-light: #8A8094;
-    --line: rgba(180, 160, 180, .28);
+    --bg-top: #FEF8F3;
+    --bg-bottom: #F3F2F8;
+    --accent: #E08FA6;
+    --accent-deep: #C97F97;
+    --accent-soft: #FBEAF0;
+    --text-main: #453E4E;
+    --text-light: #857C8D;
+    --line: rgba(160, 150, 165, .25);
     --font-kawaii: "LXGW WenKai Lite", "Noto Sans SC", serif;
 }
 
@@ -32,7 +32,7 @@ body {
 
 ::selection { background: var(--accent-soft); }
 
-/* ---------- 飘落樱花（克制版） ---------- */
+/* ---------- 飘落樱花（极简） ---------- */
 #petals {
     position: fixed;
     inset: 0;
@@ -44,9 +44,9 @@ body {
 .petal {
     position: absolute;
     top: -26px;
-    background: linear-gradient(135deg, #FFD6E0, #FFEEF2);
+    background: linear-gradient(135deg, #FBD3DE, #FDEAF0);
     border-radius: 150% 0 150% 150%;
-    box-shadow: inset 0 0 3px rgba(232, 139, 165, .18);
+    box-shadow: inset 0 0 3px rgba(224, 143, 166, .14);
     animation: fall linear infinite;
 }
 
@@ -60,31 +60,31 @@ body {
     position: relative;
     z-index: 10;
     width: 92%;
-    max-width: 1000px;
+    max-width: 980px;
     display: flex;
     align-items: center;
-    gap: 48px;
-    padding: 48px 10px;
+    gap: 52px;
+    padding: 52px 10px;
 }
 
 /* --- 左：资料 --- */
 .card-left {
-    width: 30%;
+    width: 29%;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-right: 1px dashed var(--line);
-    padding-right: 36px;
+    padding-right: 38px;
 }
 
 .avatar-box {
-    width: 122px;
-    height: 122px;
+    width: 118px;
+    height: 118px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, .75);
-    box-shadow: 0 10px 26px rgba(210, 180, 190, .25);
+    border: 3px solid rgba(255, 255, 255, .8);
+    box-shadow: 0 10px 26px rgba(190, 165, 175, .22);
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -92,12 +92,12 @@ body {
 .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
 
 .name {
-    font-size: 2rem;
+    font-size: 1.95rem;
     font-weight: bold;
-    color: #4A4254;
+    color: #453E4E;
     letter-spacing: .35em;
     text-indent: .35em;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .personal-info {
@@ -110,8 +110,8 @@ body {
 .info-tag {
     font-size: .92rem;
     color: var(--text-light);
-    background: rgba(255, 255, 255, .5);
-    border: 1px solid rgba(255, 183, 197, .3);
+    background: rgba(255, 255, 255, .55);
+    border: 1px solid rgba(224, 143, 166, .28);
     padding: 5px 15px;
     border-radius: 999px;
     letter-spacing: 1px;
@@ -124,22 +124,22 @@ body {
     background: #fff;
     color: var(--accent-deep);
     transform: translateY(-1px);
-    border-color: rgba(232, 139, 165, .5);
+    border-color: rgba(224, 143, 166, .45);
 }
 
 .copyright {
-    margin-top: 40px;
+    margin-top: 42px;
     font-size: .82rem;
     color: var(--text-light);
     letter-spacing: 2px;
-    opacity: .75;
+    opacity: .72;
 }
 
 /* --- 右：正文 --- */
 .card-right {
-    width: 70%;
+    width: 71%;
     padding: 0 6px;
-    line-height: 2.0;
+    line-height: 2.05;
     font-size: 1.03rem;
 }
 
@@ -154,14 +154,14 @@ code {
     font-family: Consolas, monospace;
     font-size: .88em;
     color: #B56C86;
-    border: 1px solid rgba(255, 183, 197, .3);
+    border: 1px solid rgba(224, 143, 166, .28);
 }
 
 .focus-box {
     border-left: 3px solid var(--accent);
     padding: 6px 0 6px 18px;
     margin: 16px 0;
-    background: linear-gradient(90deg, rgba(255, 183, 197, .07), transparent 70%);
+    background: linear-gradient(90deg, rgba(224, 143, 166, .06), transparent 70%);
     border-radius: 0 10px 10px 0;
 }
 
@@ -181,7 +181,7 @@ code {
 .likes-grid li {
     font-size: .95rem;
     padding-bottom: 5px;
-    border-bottom: 1px dashed rgba(210, 180, 190, .4);
+    border-bottom: 1px dashed rgba(200, 175, 185, .38);
     transition: color .3s ease;
 }
 
@@ -194,36 +194,6 @@ code {
     letter-spacing: 1px;
 }
 
-/* --- 链接行（来自 www.noyu.moe） --- */
-.links-row {
-    margin-top: 26px;
-    padding-top: 20px;
-    border-top: 1px dashed var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 9px;
-}
-
-.links-row a {
-    font-size: .86rem;
-    color: var(--text-light);
-    text-decoration: none;
-    background: rgba(255, 255, 255, .45);
-    border: 1px solid rgba(180, 160, 180, .26);
-    padding: 4px 14px;
-    border-radius: 999px;
-    letter-spacing: 1px;
-    transition: all .3s ease;
-}
-
-.links-row a:hover {
-    color: var(--accent-deep);
-    background: #fff;
-    border-color: rgba(232, 139, 165, .5);
-    transform: translateY(-1px);
-}
-
 /* --- 悬浮主页按钮 --- */
 .floating-btn {
     position: fixed;
@@ -231,7 +201,7 @@ code {
     right: 34px;
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #FFB7C5 0%, #E89EB0 100%);
+    background: linear-gradient(135deg, #F6AFC0 0%, #E08FA6 100%);
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -239,7 +209,7 @@ code {
     align-items: center;
     font-size: 1.02rem;
     text-decoration: none;
-    box-shadow: 0 6px 16px rgba(255, 183, 197, .4);
+    box-shadow: 0 6px 16px rgba(224, 143, 166, .35);
     z-index: 100;
     transition: all .3s cubic-bezier(.25, .8, .25, 1);
     animation: float-breath 3.2s ease-in-out infinite;
@@ -247,7 +217,7 @@ code {
 
 .floating-btn:hover {
     transform: translateY(-3px) scale(1.06);
-    box-shadow: 0 8px 22px rgba(255, 183, 197, .6);
+    box-shadow: 0 8px 22px rgba(224, 143, 166, .5);
     animation-play-state: paused;
 }
 
