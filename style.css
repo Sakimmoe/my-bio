@@ -240,17 +240,14 @@ code {
     }
     .card-right { width: 100%; padding: 0; }
     .likes-grid { grid-template-columns: 1fr; }
-    /* 手机端版权固定在页面底部 */
+    /* 手机端版权放在整体底部（滚动到文档末尾才可见） */
     .copyright {
-        position: fixed;
-        bottom: 12px;
+        position: absolute;
+        bottom: 0;
         left: 0;
         right: 0;
         margin-top: 0;
         text-align: center;
-        z-index: 50;
-        background: linear-gradient(180deg, transparent, rgba(243, 242, 248, .6));
-        padding: 6px 0 2px;
     }
     .floating-btn {
         bottom: 20px;
