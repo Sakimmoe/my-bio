@@ -7,57 +7,82 @@
     <meta name="description" content="油咖喱的个人主页：网站与服务器爱好者，安静地在互联网上留下一点属于自己的痕迹。">
     <link rel="canonical" href="https://bio.noyu.moe/">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600;700&display=swap">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<main class="page">
+    <div id="petals" aria-hidden="true"></div>
 
-    <!-- 左栏：介绍 -->
-    <header class="intro">
-        <span class="stamp" aria-hidden="true"></span>
-        <img class="avatar" src="avatar.jpg" alt="油咖喱的头像">
-        <h1>油咖喱</h1>
-        <p class="tagline">网站与服务器爱好者</p>
-        <p class="meta">中国 · 安徽 · 2002.07.14</p>
-        <p class="lead">你好，我是油咖喱。安静地在互联网上留下一点属于自己的痕迹。</p>
-        <p class="interests">游戏 · 音乐 · 小说 · 动画 · 折腾服务器</p>
-    </header>
+    <main class="wrapper">
 
-    <!-- 右栏：链接（来自 www.noyu.moe） -->
-    <aside class="side">
-        <ul class="links">
-            <li><a href="https://blog.noyu.moe" target="_blank" rel="noreferrer">
-                <span class="l-name">博客</span><span class="l-desc">blog.noyu.moe</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://link.noyu.moe" target="_blank" rel="noreferrer">
-                <span class="l-name">链接</span><span class="l-desc">link.noyu.moe</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://komari.noyu.moe" target="_blank" rel="noreferrer">
-                <span class="l-name">komari</span><span class="l-desc">komari.noyu.moe</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://status.noyu.moe" target="_blank" rel="noreferrer">
-                <span class="l-name">状态</span><span class="l-desc">status.noyu.moe</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://www.kokonoyu.com/" target="_blank" rel="noreferrer">
-                <span class="l-name">kokonoyu.com</span><span class="l-desc">关于九重紫的小项目</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer">
-                <span class="l-name">GitHub</span><span class="l-desc">我的代码仓库</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="https://space.bilibili.com/17276" target="_blank" rel="noreferrer">
-                <span class="l-name">Bilibili</span><span class="l-desc">哔哩哔哩空间</span><span class="l-arrow">→</span>
-            </a></li>
-            <li><a href="mailto:762930756@qq.com">
-                <span class="l-name">邮箱</span><span class="l-desc">762930756@qq.com</span><span class="l-arrow">→</span>
-            </a></li>
-        </ul>
-    </aside>
+        <!-- 左：资料卡 -->
+        <aside class="card-left">
+            <div class="avatar-box">
+                <img src="avatar.jpg" alt="油咖喱的头像">
+            </div>
+            <h1 class="name">油咖喱</h1>
 
-    <footer>© 2026 油咖喱 · 用心维护每一个小项目</footer>
+            <div class="personal-info">
+                <div class="info-tag"><i class="fas fa-map-marker-alt"></i> 中国 · 安徽</div>
+                <div class="info-tag"><i class="fas fa-seedling"></i> 2002.07.14</div>
+                <div class="info-tag"><i class="fas fa-ghost"></i> 资深社恐</div>
+                <div class="info-tag"><i class="fas fa-hand-sparkles"></i> 重度洁癖</div>
+                <div class="info-tag"><i class="fas fa-gem"></i> 完美主义者</div>
+            </div>
 
-</main>
+            <div class="copyright">© 2026 Made in 油咖喱</div>
+        </aside>
 
+        <!-- 右：正文 -->
+        <article class="card-right">
+            <p>✦ 哈喽，我是<strong>油咖喱</strong>。</p>
+
+            <p>♬ 平时喜欢听音乐、打游戏、看小说和动漫，也会折腾服务器、域名。<br>
+               ⌂ 我是个挺宅的人，如果条件允许的话我可以一年不出门。我有点口吃，所以我很害怕社交，害怕因为自己不善言辞会给别人带来困扰。</p>
+
+            <div class="focus-box">
+                <p>❥ 目前最喜欢的虚拟主播是<strong>九重紫</strong>。</p>
+                <p class="sub-text">
+                    2026 年 1 月 13 日下午，第一次点进直播间并关注了她。<br>
+                    在 2 月 16 日除夕夜那天，成为了她的舰长。<br>
+                    后来注册了 <code>kokonoyu.com</code>，想用自己折腾网站的爱好，为她做一些相关的项目，只希望她能开心。
+                </p>
+            </div>
+
+            <ul class="likes-grid">
+                <li>✜ 游戏最爱 <strong>《守望先锋》</strong></li>
+                <li>♪ 音乐偏爱 <strong>HoneyComeBear</strong></li>
+                <li>✎ 小说首推 <strong>乙一</strong></li>
+                <li>❈ 动漫独爱 <strong>见崎鸣</strong>《Another》</li>
+            </ul>
+
+            <p>⌨ 除了这些之外，我最大的兴趣大概就是折腾网站。买 VPS、注册域名、搭博客、部署各种小项目。虽然很多网站没什么访问量，但看到它们稳定运行的时候，还是会觉得很开心。</p>
+
+            <p class="ending">⊹ 这个页面也是如此。没有什么特别的目的。<br>
+               只是想在互联网里留下一点属于自己的痕迹。<br>
+               ✧ 如果你恰好路过这里，希望你今天过得开心。</p>
+
+            <div class="links-row">
+                <a href="https://blog.noyu.moe" target="_blank" rel="noreferrer">博客</a>
+                <a href="https://link.noyu.moe" target="_blank" rel="noreferrer">链接</a>
+                <a href="https://komari.noyu.moe" target="_blank" rel="noreferrer">komari</a>
+                <a href="https://status.noyu.moe" target="_blank" rel="noreferrer">状态</a>
+                <a href="https://www.kokonoyu.com/" target="_blank" rel="noreferrer">kokonoyu</a>
+                <a href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://space.bilibili.com/17276" target="_blank" rel="noreferrer">Bilibili</a>
+                <a href="mailto:762930756@qq.com">邮箱</a>
+            </div>
+        </article>
+
+    </main>
+
+    <a href="https://www.noyu.moe" class="floating-btn" title="前往主页" target="_blank" rel="noreferrer">
+        <i class="fas fa-house"></i>
+    </a>
+
+    <script src="script.js"></script>
 </body>
 </html>
