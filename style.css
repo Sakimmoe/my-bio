@@ -1,293 +1,178 @@
+/* ============================================================
+   yukari.bio · 极简日系
+   米白纸色 · 墨色文字 · 朱色一点 · 大量留白
+   ============================================================ */
+
 :root {
-    --font-color: #5f4a70;
-    --card-bg: rgba(255, 255, 255, 0.92);
-    --overlay: rgba(255, 255, 255, 0.64);
-    --bg-fallback: #efe6f1;
-    --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --paper:  #F8F5EF;
+    --ink:    #2B2622;
+    --ink-soft: #6E6459;
+    --ink-faint: #A79C8E;
+    --line:   #E5DED2;
+    --accent: #B3402E;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html,
-body {
-    min-height: 100%;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: var(--font-sans);
-    color: var(--font-color);
-    background: var(--bg-fallback);
-    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 背景图 + 白色遮罩 --- */
-.bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background: var(--bg-fallback);
-}
+::selection { background: #EED9D1; }
 
-.bg img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-}
-
-.bg .overlay {
-    position: absolute;
-    inset: 0;
-    background: var(--overlay);
-}
-
-.container {
-    position: relative;
-    z-index: 1;
-}
-
-/* --- 页面主体 --- */
-.container {
-    max-width: 480px;
+.page {
+    max-width: 620px;
     margin: 0 auto;
-    padding: 48px 20px 56px;
+    padding: 72px 26px 48px;
 }
 
-/* --- 头像与个人信息 --- */
-.profile {
+/* ---------- 首部 ---------- */
+.hero {
     text-align: center;
-    margin-bottom: 30px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid var(--line);
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 18px;
+    width: 78px;
+    height: 78px;
     border-radius: 50%;
-    border: 2px solid var(--font-color);
-    background: #fff;
-    box-shadow: 6px 8px 0 rgba(95, 74, 112, 0.9);
-    overflow: hidden;
-}
-
-.avatar img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    display: block;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 10px rgba(43, 38, 34, .06);
 }
 
 h1 {
-    font-size: 2rem;
+    margin-top: 22px;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 30px;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    text-indent: 0.12em;
+    letter-spacing: .14em;
 }
 
-.tagline {
-    margin-top: 6px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-}
+.tagline { margin-top: 10px; font-size: 14px; color: var(--ink-soft); }
 
 .meta {
     margin-top: 4px;
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 12px;
+    letter-spacing: .12em;
+    color: var(--ink-faint);
 }
 
-.socials {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 18px;
+.lead {
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
 }
 
-.socials a {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+/* ---------- 板块 ---------- */
+.sec { padding: 44px 0 36px; }
+
+.sec + .sec { border-top: 1px solid var(--line); }
+
+.sec-title {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: var(--card-bg);
-    border: 2px solid var(--font-color);
-    color: var(--font-color);
-    font-size: 1.05rem;
-    text-decoration: none;
-    box-shadow: 3px 4px 0 rgba(95, 74, 112, 0.8);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 10px;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: .12em;
 }
 
-.socials a:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 5px 0 rgba(95, 74, 112, 0.9);
+.seal {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    display: inline-block;
+    flex-shrink: 0;
 }
 
-.profile-text {
-    margin-top: 22px;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+.sec-title em {
+    font-style: normal;
+    font-size: 11px;
+    font-family: "Noto Sans SC", sans-serif;
+    letter-spacing: .3em;
+    color: var(--ink-faint);
 }
 
-/* --- lit.link 风格卡片 --- */
-.card-block {
-    position: relative;
-    margin-bottom: 20px;
+.sec p {
+    margin-top: 16px;
+    font-size: 14.5px;
+    line-height: 2.05;
+    color: var(--ink-soft);
 }
 
-.card-block::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 8px;
-    width: 100%;
-    height: 100%;
-    background: var(--font-color);
-}
+.sec-lead { margin-top: 16px; }
 
-.card {
-    position: relative;
-    z-index: 1;
-    background: var(--card-bg);
-    border: 2px solid var(--font-color);
-    padding: 16px 18px;
-}
-
-.card h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-}
-
-.card-body {
-    font-size: 0.98rem;
-    line-height: 1.75;
-}
-
-.card-body p {
-    margin-bottom: 10px;
-    text-align: justify;
-}
-
-.card-body p:last-child {
-    margin-bottom: 0;
-}
-
+/* ---------- 兴趣 ---------- */
 .interests {
     list-style: none;
-    margin-top: 2px;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 30px;
 }
 
 .interests li {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px dashed rgba(95, 74, 112, 0.25);
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 2px;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--line);
 }
 
-.interests li:last-child {
-    border-bottom: none;
-}
+.interests b { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.interests span { color: var(--ink-soft); }
 
-.interests i {
-    width: 20px;
-    text-align: center;
-}
+/* ---------- 链接 ---------- */
+.links { list-style: none; margin-top: 16px; }
 
-/* --- 可点击链接卡片 --- */
-a.link-item {
-    position: relative;
-    display: block;
-    margin-bottom: 18px;
-    color: var(--font-color);
-    text-decoration: none;
-}
-
-a.link-item::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 8px;
-    width: 100%;
-    height: 100%;
-    background: var(--font-color);
-}
-
-.card.link-card {
+.links a {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 12px 16px;
-    transition: transform 0.15s ease;
+    padding: 17px 8px;
+    border-bottom: 1px solid var(--line);
+    color: inherit;
+    text-decoration: none;
+    transition: padding-left .25s, background .25s;
 }
 
-a.link-item:hover .card.link-card {
-    transform: translate(-2px, -2px);
-}
+.links a:hover { padding-left: 16px; background: rgba(179, 64, 46, .045); }
 
-.link-card > i:first-child {
-    width: 24px;
-    text-align: center;
-    font-size: 1.15rem;
-}
+.l-name { font-size: 15px; font-weight: 500; min-width: 104px; }
+.l-desc { font-size: 12.5px; color: var(--ink-faint); flex: 1; }
+.l-arrow { color: var(--ink-faint); transition: transform .25s, color .25s; }
+.links a:hover .l-arrow { transform: translateX(4px); color: var(--accent); }
 
-.link-text {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.link-text strong {
-    font-size: 1rem;
-}
-
-.link-text small {
-    margin-top: 2px;
-    font-size: 0.82rem;
-    opacity: 0.75;
-}
-
-.link-arrow {
-    opacity: 0.7;
-}
-
-/* --- 页脚 --- */
+/* ---------- 页脚 ---------- */
 footer {
-    margin-top: 34px;
+    margin-top: 52px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
     text-align: center;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    opacity: 0.75;
+    font-size: 12px;
+    color: var(--ink-faint);
 }
 
-/* --- 手机端适配 --- */
-@media (max-width: 520px) {
-    .container {
-        padding: 32px 16px 44px;
-    }
+.quiet { margin-top: 8px; letter-spacing: .24em; }
 
-    .avatar {
-        width: 100px;
-        height: 100px;
-    }
+/* ---------- 响应式 ---------- */
+@media (max-width: 480px) {
+    .page { padding-top: 52px; }
+    .interests { grid-template-columns: 1fr; }
+    .l-name { min-width: 88px; }
+}
 
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    .card {
-        padding: 14px 14px;
-    }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
 }

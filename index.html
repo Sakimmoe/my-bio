@@ -6,126 +6,75 @@
     <title>油咖喱 | yukari.bio</title>
     <meta name="description" content="油咖喱的个人主页：网站与服务器爱好者，安静地在互联网上留下一点属于自己的痕迹。">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="bg" aria-hidden="true">
-        <img src="bg-character.png" alt="">
-        <div class="overlay"></div>
-    </div>
+<main class="page">
 
-    <main class="container">
-        <header class="profile">
-            <div class="avatar">
-                <img src="avatar.jpg" alt="油咖喱的头像">
-            </div>
-            <h1>油咖喱</h1>
-            <p class="tagline">网站与服务器爱好者</p>
-            <p class="meta">中国 · 安徽 · 2002.07.14</p>
+    <!-- 首部 -->
+    <header class="hero">
+        <img class="avatar" src="avatar.jpg" alt="油咖喱的头像">
+        <h1>油咖喱</h1>
+        <p class="tagline">网站与服务器爱好者</p>
+        <p class="meta">中国 · 安徽 · 2002.07.14</p>
+        <p class="lead">你好，我是油咖喱。这个页面记录关于我的一些事。</p>
+    </header>
 
-            <div class="socials">
-                <a href="https://yukari.one" target="_blank" rel="noreferrer" title="个人主页">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-                <a href="https://kokonoyu.com" target="_blank" rel="noreferrer" title="kokonoyu.com">
-                    <i class="fa-solid fa-heart"></i>
-                </a>
-                <a href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+    <!-- 关于我 -->
+    <section class="sec">
+        <h2 class="sec-title"><span class="seal" aria-hidden="true"></span>关于我<em>自己紹介</em></h2>
+        <p>你好，我是油咖喱，来自安徽，2002 年 7 月生。性格偏内向，喜欢安静，做事习惯把细节做到位——朋友们常说我是个完美主义者。</p>
+        <p>平时喜欢听音乐、打游戏、看小说和动画，也热衷于折腾互联网：买服务器、注册域名、搭博客、部署各种小项目。我不太擅长社交，但对待人和事都足够认真。</p>
+        <p>比起热闹，我更享受把一个想法从零做到稳定运行的过程。这个页面也是如此：没有太复杂的目的，只是想在网上留下一块属于自己的地方。</p>
+    </section>
 
-            <p class="profile-text">你好，我是油咖喱。这个页面记录关于我的一些事。</p>
-        </header>
+    <!-- 关注与项目 -->
+    <section class="sec">
+        <h2 class="sec-title"><span class="seal" aria-hidden="true"></span>关注与项目<em>関心ごと</em></h2>
+        <p>2026 年初，我开始关注九重紫。</p>
+        <p>1 月 13 日，我第一次点进她的直播间；2 月 16 日除夕夜，成为了她的舰长。后来我有幸注册到了 kokonoyu.com，想用自己的网站开发经验，为她做一点小而认真的项目，也算是一份支持。</p>
+        <p>这个项目仍在慢慢完善中。</p>
+    </section>
 
-        <div class="cards">
-            <section class="card-block">
-                <div class="card">
-                    <h2>关于我</h2>
-                    <div class="card-body">
-                        <p>你好，我是油咖喱，来自安徽，2002 年 7 月生。性格偏内向，喜欢安静，做事习惯把细节做到位——朋友们常说我是个完美主义者。</p>
-                        <p>平时喜欢听音乐、打游戏、看小说和动画，也热衷于折腾互联网：买服务器、注册域名、搭博客、部署各种小项目。我不太擅长社交，但对待人和事都足够认真。</p>
-                        <p>比起热闹，我更享受把一个想法从零做到稳定运行的过程。这个页面也是如此：没有太复杂的目的，只是想在网上留下一块属于自己的地方。</p>
-                    </div>
-                </div>
-            </section>
+    <!-- 兴趣 -->
+    <section class="sec">
+        <h2 class="sec-title"><span class="seal" aria-hidden="true"></span>兴趣<em>趣味</em></h2>
+        <p class="sec-lead">除了折腾网站，这些也构成了我的日常：</p>
+        <ul class="interests">
+            <li><b>游戏</b><span>最常玩《守望先锋》</span></li>
+            <li><b>音乐</b><span>偏爱 HoneyComeBear</span></li>
+            <li><b>小说</b><span>首推乙一</span></li>
+            <li><b>动画</b><span>《见崎鸣》（Another）</span></li>
+        </ul>
+    </section>
 
-            <section class="card-block">
-                <div class="card">
-                    <h2>关注与项目</h2>
-                    <div class="card-body">
-                        <p>2026 年初，我开始关注九重紫。</p>
-                        <p>1 月 13 日，我第一次点进她的直播间；2 月 16 日除夕夜，成为了她的舰长。后来我有幸注册到了 kokonoyu.com，想用自己的网站开发经验，为她做一点小而认真的项目，也算是一份支持。</p>
-                        <p>这个项目仍在慢慢完善中。</p>
-                    </div>
-                </div>
-            </section>
+    <!-- 链接 -->
+    <section class="sec">
+        <h2 class="sec-title"><span class="seal" aria-hidden="true"></span>链接<em>リンク</em></h2>
+        <ul class="links">
+            <li><a href="https://yukari.one" target="_blank" rel="noreferrer">
+                <span class="l-name">个人主页</span><span class="l-desc">yukari.one · 博客与随笔</span><span class="l-arrow">→</span>
+            </a></li>
+            <li><a href="https://kokonoyu.com" target="_blank" rel="noreferrer">
+                <span class="l-name">kokonoyu.com</span><span class="l-desc">关于九重紫的小项目</span><span class="l-arrow">→</span>
+            </a></li>
+            <li><a href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer">
+                <span class="l-name">GitHub</span><span class="l-desc">我的代码仓库</span><span class="l-arrow">→</span>
+            </a></li>
+            <li><a href="https://yukari.bio" target="_blank" rel="noreferrer">
+                <span class="l-name">本站</span><span class="l-desc">yukari.bio · 你现在所在的页面</span><span class="l-arrow">→</span>
+            </a></li>
+        </ul>
+    </section>
 
-            <section class="card-block">
-                <div class="card">
-                    <h2>兴趣</h2>
-                    <div class="card-body">
-                        <p>除了折腾网站，这些也构成了我的日常：</p>
-                        <ul class="interests">
-                            <li><i class="fa-solid fa-gamepad"></i>游戏：最常玩《守望先锋》</li>
-                            <li><i class="fa-solid fa-music"></i>音乐：偏爱 HoneyComeBear</li>
-                            <li><i class="fa-solid fa-book"></i>小说：首推乙一</li>
-                            <li><i class="fa-solid fa-tv"></i>动画：《见崎鸣》（Another）</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+    <footer>
+        <p>© 2026 油咖喱 · 用心维护每一个小项目</p>
+        <p class="quiet">安静地在互联网上留下一点属于自己的痕迹</p>
+    </footer>
 
-            <a class="link-item" href="https://yukari.one" target="_blank" rel="noreferrer">
-                <div class="card link-card">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="link-text">
-                        <strong>个人主页</strong>
-                        <small>yukari.one · 博客与随笔</small>
-                    </span>
-                    <i class="fa-solid fa-arrow-right link-arrow"></i>
-                </div>
-            </a>
-
-            <a class="link-item" href="https://kokonoyu.com" target="_blank" rel="noreferrer">
-                <div class="card link-card">
-                    <i class="fa-solid fa-heart"></i>
-                    <span class="link-text">
-                        <strong>kokonoyu.com</strong>
-                        <small>关于九重紫的小项目</small>
-                    </span>
-                    <i class="fa-solid fa-arrow-right link-arrow"></i>
-                </div>
-            </a>
-
-            <a class="link-item" href="https://github.com/Sakimmoe" target="_blank" rel="noreferrer">
-                <div class="card link-card">
-                    <i class="fa-brands fa-github"></i>
-                    <span class="link-text">
-                        <strong>GitHub</strong>
-                        <small>我的代码仓库</small>
-                    </span>
-                    <i class="fa-solid fa-arrow-right link-arrow"></i>
-                </div>
-            </a>
-
-            <a class="link-item" href="https://yukari.bio" target="_blank" rel="noreferrer">
-                <div class="card link-card">
-                    <i class="fa-solid fa-globe"></i>
-                    <span class="link-text">
-                        <strong>本站</strong>
-                        <small>yukari.bio · 你现在所在的页面</small>
-                    </span>
-                    <i class="fa-solid fa-arrow-right link-arrow"></i>
-                </div>
-            </a>
-        </div>
-
-        <footer>© 2026 油咖喱 · 用心维护每一个小项目</footer>
-    </main>
+</main>
 
 </body>
 </html>
