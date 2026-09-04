@@ -1,0 +1,10 @@
+/avatar.jpg
+  Cache-Control: public, max-age=2592000, immutable
+/bg-character.png
+  Cache-Control: public, max-age=2592000, immutable
+/favicon.png
+  Cache-Control: public, max-age=2592000, immutable
+/script.js
+  Cache-Control: public, max-age=2592000, immutable
+/style.css
+  Cache-Control: public, max-age=2592000, immutable
