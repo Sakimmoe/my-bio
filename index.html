@@ -12,14 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- 让整体左右更宽一点；如果 style.css 里已有 .wrapper 宽度，这里的设置会覆盖它 -->
+    <!-- 让整体左右更宽，并整体居中 -->
     <style>
         .wrapper {
             max-width: 1800px;
             width: min(97%, 1800px);
-        }
-        .card-right {
-            max-width: none;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+            align-items: flex-start;
         }
     </style>
 </head>
