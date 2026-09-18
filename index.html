@@ -12,15 +12,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- 让整体左右更宽，并整体居中 -->
+    <!-- 去掉左栏后，让正文单独居中 -->
     <style>
         .wrapper {
             max-width: 1800px;
             width: min(97%, 1800px);
             margin-left: auto;
             margin-right: auto;
+            display: flex;
             justify-content: center;
             align-items: flex-start;
+        }
+        .card-right {
+            max-width: 900px;
+            width: 100%;
         }
     </style>
 </head>
@@ -29,24 +34,6 @@
     <div id="petals" aria-hidden="true"></div>
 
     <main class="wrapper">
-
-        <!-- 左：资料卡 -->
-        <aside class="card-left">
-            <div class="avatar-box">
-                <img src="avatar.jpg" alt="油咖喱的头像">
-            </div>
-            <h1 class="name">油咖喱</h1>
-
-            <div class="personal-info">
-                <div class="info-tag"><i class="fas fa-map-marker-alt"></i> 中国 · 安徽</div>
-                <div class="info-tag"><i class="fas fa-seedling"></i> 2002.07.14</div>
-                <div class="info-tag"><i class="fas fa-ghost"></i> 资深社恐</div>
-                <div class="info-tag"><i class="fas fa-hand-sparkles"></i> 重度洁癖</div>
-                <div class="info-tag"><i class="fas fa-gem"></i> 完美主义者</div>
-            </div>
-
-            <div class="copyright">© 2026 Made in 油咖喱</div>
-        </aside>
 
         <!-- 右：正文 -->
         <article class="card-right">
